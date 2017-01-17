@@ -1,0 +1,854 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Data Frames · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="data-types.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    MLeap Documentation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../why.html">
+            
+                <a href="../../why.html">
+            
+                    
+                    Why Mleap?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../getting-started/">
+            
+                <a href="../../getting-started/">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../../getting-started/mleap.html">
+            
+                <a href="../../getting-started/mleap.html">
+            
+                    
+                    Getting Started with MLeap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../../getting-started/scikit-learn.html">
+            
+                <a href="../../getting-started/scikit-learn.html">
+            
+                    
+                    Getting Started with Scikit-learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="../../getting-started/spark.html">
+            
+                <a href="../../getting-started/spark.html">
+            
+                    
+                    Getting Started with Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" data-path="../../getting-started/py-spark.html">
+            
+                <a href="../../getting-started/py-spark.html">
+            
+                    
+                    Getting Started with PySpark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.7" data-path="../../getting-started/tensorflow.html">
+            
+                <a href="../../getting-started/tensorflow.html">
+            
+                    
+                    Getting Started with Tensorflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.8" data-path="../../getting-started/building.html">
+            
+                <a href="../../getting-started/building.html">
+            
+                    
+                    Building from Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Core Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Data Frames
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="data-types.html">
+            
+                <a href="data-types.html">
+            
+                    
+                    Data Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../transformers/">
+            
+                <a href="../transformers/">
+            
+                    
+                    Transformers
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../transformers/feature.html">
+            
+                <a href="../transformers/feature.html">
+            
+                    
+                    Feature
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../transformers/regression.html">
+            
+                <a href="../transformers/regression.html">
+            
+                    
+                    Regression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../transformers/classification.html">
+            
+                <a href="../transformers/classification.html">
+            
+                    
+                    Classification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../transformers/clustering.html">
+            
+                <a href="../transformers/clustering.html">
+            
+                    
+                    Clustering
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../transformers/custom.html">
+            
+                <a href="../transformers/custom.html">
+            
+                    
+                    Custom
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../pipelines.html">
+            
+                <a href="../pipelines.html">
+            
+                    
+                    Pipelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../mleap-bundles.html">
+            
+                <a href="../mleap-bundles.html">
+            
+                    
+                    MLeap Bundles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../mleap-runtime.html">
+            
+                <a href="../mleap-runtime.html">
+            
+                    
+                    MLeap Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../basic/">
+            
+                <a href="../../basic/">
+            
+                    
+                    Basic Usage
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../basic/create-leap-frame.html">
+            
+                <a href="../../basic/create-leap-frame.html">
+            
+                    
+                    Creating a Leap Frame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../basic/insert-values-leap-frame.html">
+            
+                <a href="../../basic/insert-values-leap-frame.html">
+            
+                    
+                    Inserting Into a Leap Frame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../basic/transform-leap-frame.html">
+            
+                <a href="../../basic/transform-leap-frame.html">
+            
+                    
+                    Transforming a Leap Frame
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../advanced/">
+            
+                <a href="../../advanced/">
+            
+                    
+                    Advanced Usage
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../advanced/row-transformer.html">
+            
+                <a href="../../advanced/row-transformer.html">
+            
+                    
+                    Row Transformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../advanced/custom-transformer.html">
+            
+                <a href="../../advanced/custom-transformer.html">
+            
+                    
+                    Custom Transformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../advanced/custom-data-type.html">
+            
+                <a href="../../advanced/custom-data-type.html">
+            
+                    
+                    Custom Data Type
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../mleap-bundle/">
+            
+                <a href="../../mleap-bundle/">
+            
+                    
+                    MLeap Bundles
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../mleap-bundle/mleap.html">
+            
+                <a href="../../mleap-bundle/mleap.html">
+            
+                    
+                    MLeap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../mleap-bundle/spark.html">
+            
+                <a href="../../mleap-bundle/spark.html">
+            
+                    
+                    Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../mleap-bundle/py-spark.html">
+            
+                <a href="../../mleap-bundle/py-spark.html">
+            
+                    
+                    PySpark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../mleap-bundle/scikit-learn.html">
+            
+                <a href="../../mleap-bundle/scikit-learn.html">
+            
+                    
+                    Scikit-learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../mleap-bundle/tensorflow.html">
+            
+                <a href="../../mleap-bundle/tensorflow.html">
+            
+                    
+                    Tensorflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../integration/">
+            
+                <a href="../../integration/">
+            
+                    
+                    Integration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../integration/spark.html">
+            
+                <a href="../../integration/spark.html">
+            
+                    
+                    Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../integration/py-spark.html">
+            
+                <a href="../../integration/py-spark.html">
+            
+                    
+                    PySpark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../integration/scikit-learn.html">
+            
+                <a href="../../integration/scikit-learn.html">
+            
+                    
+                    Scikit-learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../integration/tensorflow/">
+            
+                <a href="../../integration/tensorflow/">
+            
+                    
+                    Tensorflow
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../../integration/tensorflow/mleap-transformer.html">
+            
+                <a href="../../integration/tensorflow/mleap-transformer.html">
+            
+                    
+                    MLeap Transformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../../integration/tensorflow/bundle-serialization.html">
+            
+                <a href="../../integration/tensorflow/bundle-serialization.html">
+            
+                    
+                    Bundle Serialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Data Frames</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="data-frames">Data Frames</h1>
+<p>Data frames are used to store data during execution of an ML pipeline.
+They are similar to a SQL table, in that they have a schema for storing
+the data types of every column and they have rows for storing the actual
+values.</p>
+<p>Spark, Scikit-learn, and MLeap all have their own version of a data
+frame. Tensorflow uses a graph of inputs and outputs to execute
+transformations, which is very easy to inteface with a data frame
+structure.</p>
+<h2 id="spark-data-frames">Spark Data Frames</h2>
+<p>Spark&apos;s data frames are optimized for distributed computation, making
+them excellent for processing large datasets. They are very
+heavy-weight, as they need to handle network failure scenarios,
+compilation of execution plans, redundancy, and many other requirements
+in a distributed context. Spark data frames offer a lot of functionality
+outside of ML pipelines, such as joining large datasets, mapping,
+reducing, SQL queries, etc.</p>
+<h2 id="scikit-learn-data-frames">Scikit-learn Data Frames</h2>
+<p>Scikit-learn data frames are provided by <a href="http://pandas.pydata.org/" target="_blank">Pandas</a>
+and <a href="http://www.numpy.org/" target="_blank">NumPy</a>. These are lightweight data
+structures, and offer quite a bit of the same functionality as Spark
+data frames, minus the distributed nature of Spark&apos;s data frames.</p>
+<h2 id="mleap-data-frames-leap-frames">MLeap Data Frames: Leap Frames</h2>
+<p>Leap frames are very lightweight data structures and are meant to
+support very basic operations and ML transformations. Because of their
+simplicity, they are highly-optimized for use as a realtime prediction
+engine or small-batch predictions. Leap frames can be abstracted over
+Spark data frames, and so they do not lose their ability to act as an
+efficient batch-mode data store as well.</p>
+<h2 id="tensorflow">Tensorflow</h2>
+<p><a href="https://www.tensorflow.org/" target="_blank">Tensorflow</a> does not have data frames like Spark, Scikit-learn and MLeap.
+Instead, Tensorflow relies on input nodes and output nodes, connected by
+a graph of transfomation operations. This paradigm is actually neatly
+compatible with data frames, as certain columns can be used to provide
+data for the input nodes, while output nodes can be placed in new
+columns of a data frame. Leap frames are specifically designed to be
+compatible with Tensorflow graphs, Spark data frames, and to a certain
+extent, Scikit-learn data frames.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Core Concepts">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="data-types.html" class="navigation navigation-next " aria-label="Next page: Data Types">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Data Frames","level":"1.2.1","depth":2,"next":{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]},"previous":{"title":"Core Concepts","level":"1.2","depth":1,"path":"core-concepts/index.md","ref":"core-concepts/index.md","articles":[{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Feature","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/feature.md","ref":"core-concepts/transformers/feature.md","articles":[]},{"title":"Regression","level":"1.2.2.2","depth":3,"path":"core-concepts/transformers/regression.md","ref":"core-concepts/transformers/regression.md","articles":[]},{"title":"Classification","level":"1.2.2.3","depth":3,"path":"core-concepts/transformers/classification.md","ref":"core-concepts/transformers/classification.md","articles":[]},{"title":"Clustering","level":"1.2.2.4","depth":3,"path":"core-concepts/transformers/clustering.md","ref":"core-concepts/transformers/clustering.md","articles":[]},{"title":"Custom","level":"1.2.2.5","depth":3,"path":"core-concepts/transformers/custom.md","ref":"core-concepts/transformers/custom.md","articles":[]}]},{"title":"Pipelines","level":"1.2.3","depth":2,"path":"core-concepts/pipelines.md","ref":"core-concepts/pipelines.md","articles":[]},{"title":"MLeap Bundles","level":"1.2.4","depth":2,"path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md","articles":[]},{"title":"MLeap Runtime","level":"1.2.5","depth":2,"path":"core-concepts/mleap-runtime.md","ref":"core-concepts/mleap-runtime.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"core-concepts/data-frames/index.md","mtime":"2017-01-17T01:49:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T03:03:02.153Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
