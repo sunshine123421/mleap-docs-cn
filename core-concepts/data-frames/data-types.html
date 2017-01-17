@@ -754,6 +754,14 @@ for which columns and how transformations should be handled.</p>
 </thead>
 <tbody>
 <tr>
+<td>Byte</td>
+<td>8-bit integer values supported by all platforms, MLeap and Spark only support signed versions</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>16-bit integer values supported by all platforms, MLeap and Spark only support signed versions</td>
+</tr>
+<tr>
 <td>Integer</td>
 <td>32-bit integer values supported by all platforms, MLeap and Spark only support signed versions</td>
 </tr>
@@ -776,6 +784,10 @@ for which columns and how transformations should be handled.</p>
 <tr>
 <td>String</td>
 <td>A series of characters, either null-terminated or length prefixed depending on platform</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Sequence of elements of any of the above basic types</td>
 </tr>
 <tr>
 <td>Tensor</td>
@@ -838,7 +850,7 @@ libraries of transformers shouldn&apos;t work on any of them!</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Types","level":"1.2.1.1","depth":3,"next":{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Feature","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/feature.md","ref":"core-concepts/transformers/feature.md","articles":[]},{"title":"Regression","level":"1.2.2.2","depth":3,"path":"core-concepts/transformers/regression.md","ref":"core-concepts/transformers/regression.md","articles":[]},{"title":"Classification","level":"1.2.2.3","depth":3,"path":"core-concepts/transformers/classification.md","ref":"core-concepts/transformers/classification.md","articles":[]},{"title":"Clustering","level":"1.2.2.4","depth":3,"path":"core-concepts/transformers/clustering.md","ref":"core-concepts/transformers/clustering.md","articles":[]},{"title":"Custom","level":"1.2.2.5","depth":3,"path":"core-concepts/transformers/custom.md","ref":"core-concepts/transformers/custom.md","articles":[]}]},"previous":{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"core-concepts/data-frames/data-types.md","mtime":"2017-01-17T01:52:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T03:03:02.153Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Types","level":"1.2.1.1","depth":3,"next":{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Feature","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/feature.md","ref":"core-concepts/transformers/feature.md","articles":[]},{"title":"Regression","level":"1.2.2.2","depth":3,"path":"core-concepts/transformers/regression.md","ref":"core-concepts/transformers/regression.md","articles":[]},{"title":"Classification","level":"1.2.2.3","depth":3,"path":"core-concepts/transformers/classification.md","ref":"core-concepts/transformers/classification.md","articles":[]},{"title":"Clustering","level":"1.2.2.4","depth":3,"path":"core-concepts/transformers/clustering.md","ref":"core-concepts/transformers/clustering.md","articles":[]},{"title":"Custom","level":"1.2.2.5","depth":3,"path":"core-concepts/transformers/custom.md","ref":"core-concepts/transformers/custom.md","articles":[]}]},"previous":{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"core-concepts/data-frames/data-types.md","mtime":"2017-01-17T04:04:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T04:06:29.858Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
