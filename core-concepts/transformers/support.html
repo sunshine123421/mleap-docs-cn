@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Data Frames · GitBook</title>
+        <title>Supported Transformers · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="data-types.html" />
+    <link rel="next" href="../pipelines.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -226,9 +226,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="./">
+        <li class="chapter " data-level="1.2.1" data-path="../data-frames/">
             
-                <a href="./">
+                <a href="../data-frames/">
             
                     
                     Data Frames
@@ -240,9 +240,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1" data-path="data-types.html">
+        <li class="chapter " data-level="1.2.1.1" data-path="../data-frames/data-types.html">
             
-                <a href="data-types.html">
+                <a href="../data-frames/data-types.html">
             
                     
                     Data Types
@@ -258,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../transformers/">
+        <li class="chapter " data-level="1.2.2" data-path="./">
             
-                <a href="../transformers/">
+                <a href="./">
             
                     
                     Transformers
@@ -272,9 +272,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.2.1" data-path="../transformers/support.html">
+        <li class="chapter active" data-level="1.2.2.1" data-path="support.html">
             
-                <a href="../transformers/support.html">
+                <a href="support.html">
             
                     
                     Supported Transformers
@@ -719,7 +719,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Data Frames</a>
+        <a href="../.." >Supported Transformers</a>
     </h1>
 </div>
 
@@ -734,44 +734,457 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="data-frames">Data Frames</h1>
-<p>Data frames are used to store data during execution of an ML pipeline.
-They are similar to a SQL table, in that they have a schema for storing
-the data types of every column and they have rows for storing the actual
-values.</p>
-<p>Spark, Scikit-learn, and MLeap all have their own version of a data
-frame. Tensorflow uses a graph of inputs and outputs to execute
-transformations, which is very easy to inteface with a data frame
-structure.</p>
-<h2 id="spark-data-frames">Spark Data Frames</h2>
-<p>Spark&apos;s data frames are optimized for distributed computation, making
-them excellent for processing large datasets. They are very
-heavy-weight, as they need to handle network failure scenarios,
-compilation of execution plans, redundancy, and many other requirements
-in a distributed context. Spark data frames offer a lot of functionality
-outside of ML pipelines, such as joining large datasets, mapping,
-reducing, SQL queries, etc.</p>
-<h2 id="scikit-learn-data-frames">Scikit-learn Data Frames</h2>
-<p>Scikit-learn data frames are provided by <a href="http://pandas.pydata.org/" target="_blank">Pandas</a>
-and <a href="http://www.numpy.org/" target="_blank">NumPy</a>. These are lightweight data
-structures, and offer quite a bit of the same functionality as Spark
-data frames, minus the distributed nature of Spark&apos;s data frames.</p>
-<h2 id="mleap-data-frames-leap-frames">MLeap Data Frames: Leap Frames</h2>
-<p>Leap frames are very lightweight data structures and are meant to
-support very basic operations and ML transformations. Because of their
-simplicity, they are highly-optimized for use as a realtime prediction
-engine or small-batch predictions. Leap frames can be abstracted over
-Spark data frames, and so they do not lose their ability to act as an
-efficient batch-mode data store as well.</p>
-<h2 id="tensorflow">Tensorflow</h2>
-<p><a href="https://www.tensorflow.org/" target="_blank">Tensorflow</a> does not have data frames like Spark, Scikit-learn and MLeap.
-Instead, Tensorflow relies on input nodes and output nodes, connected by
-a graph of transfomation operations. This paradigm is actually neatly
-compatible with data frames, as certain columns can be used to provide
-data for the input nodes, while output nodes can be placed in new
-columns of a data frame. Leap frames are specifically designed to be
-compatible with Tensorflow graphs, Spark data frames, and to a certain
-extent, Scikit-learn data frames.</p>
+                                <h1 id="supported-transformers">Supported Transformers</h1>
+<p>Here is a list of all supported transformers in all of the core platforms that MLeap supports.</p>
+<p>NOTE: Tensorflow has no listed support here, but it is possible to
+<a href="../../integration/tensorflow/usage.html">include Tensorflow graphs in an MLeap transformer pipeline</a>.</p>
+<h2 id="features">Features</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binarizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>BucketedRandomProjectionLSH</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Bucketizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>ChiSqSelector</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>CountVectorizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>DCT</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>ElementwiseProduct</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>HashingTermFrequency</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>IDF</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Imputer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Interaction</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>MaxAbsScaler</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>MinHashLSH</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>MinMaxScaler</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Ngram</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Normalizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>OneHotEncoder</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>PCA</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>QuantileDiscretizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>PolynomialExpansion</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>ReverseStringIndexer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>StandardScaler</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>StopWordsRemover</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>StringIndexer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>Tokenizer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>VectorAssembler</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>VectorIndexer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>VectorSlicer</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>WordToVector</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="classification">Classification</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DecisionTreeClassifier</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>GradientBoostedTreeClassifier</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>LogisticRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>LogisticRegressionCv</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>NaiveBayesClassifier</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>OneVsRest</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>RandomForestClassifier</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>SupportVectorMachines</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>MultiLayerPerceptron</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="regression">Regression</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AFTSurvivalRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>DecisionTreeRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>GeneralizedLinearRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>GradientBoostedTreeRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>IsotonicRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>LinearRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>RandomForestRegression</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+</tr>
+</tbody>
+</table>
+<h2 id="clustering">Clustering</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BisectingKMeans</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>GaussianMixtureModel</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>KMeans</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>LDA</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="extensions">Extensions</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MathUnary</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:left">Simple set of unary mathematical operations</td>
+</tr>
+<tr>
+<td>MathBinary</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:left">Simple set of binary mathematical operations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="recommendation">Recommendation</h2>
+<table>
+<thead>
+<tr>
+<th>Transformer</th>
+<th style="text-align:center">Spark</th>
+<th style="text-align:right">MLeap</th>
+<th style="text-align:right">Scikit-Learn</th>
+<th style="text-align:right">TensorFlow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALS</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -799,12 +1212,12 @@ extent, Scikit-learn data frames.</p>
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Core Concepts">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Transformers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="data-types.html" class="navigation navigation-next " aria-label="Next page: Data Types">
+                <a href="../pipelines.html" class="navigation navigation-next " aria-label="Next page: Pipelines">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -815,7 +1228,7 @@ extent, Scikit-learn data frames.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Frames","level":"1.2.1","depth":2,"next":{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]},"previous":{"title":"Core Concepts","level":"1.2","depth":1,"path":"core-concepts/index.md","ref":"core-concepts/index.md","articles":[{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Supported Transformers","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/support.md","ref":"core-concepts/transformers/support.md","articles":[]}]},{"title":"Pipelines","level":"1.2.3","depth":2,"path":"core-concepts/pipelines.md","ref":"core-concepts/pipelines.md","articles":[]},{"title":"MLeap Bundles","level":"1.2.4","depth":2,"path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md","articles":[]},{"title":"MLeap Runtime","level":"1.2.5","depth":2,"path":"core-concepts/mleap-runtime.md","ref":"core-concepts/mleap-runtime.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"core-concepts/data-frames/index.md","mtime":"2017-01-17T01:49:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T05:41:08.723Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Supported Transformers","level":"1.2.2.1","depth":3,"next":{"title":"Pipelines","level":"1.2.3","depth":2,"path":"core-concepts/pipelines.md","ref":"core-concepts/pipelines.md","articles":[]},"previous":{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Supported Transformers","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/support.md","ref":"core-concepts/transformers/support.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"core-concepts/transformers/support.md","mtime":"2017-01-17T05:40:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-17T05:41:08.723Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
