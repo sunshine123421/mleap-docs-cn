@@ -393,12 +393,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../scikit-learn/bundle.html">
+        <li class="chapter " data-level="1.5.1" data-path="../scikit-learn/transformers.html">
             
-                <a href="../scikit-learn/bundle.html">
+                <a href="../scikit-learn/transformers.html">
             
                     
-                    Serialization
+                    Transformers Guide
             
                 </a>
             
@@ -817,7 +817,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="jupyter-setup">Jupyter Setup</h2>
+<p>To run Spark within Jupyter we recommend using the Toree kernel.
+We are going to assume you already have the following installed:</p>
+<ol>
+<li>Python 2.x</li>
+<li>PIP</li>
+<li>Docker (required to install Toree)</li>
+</ol>
+<h3 id="install-jupyter">Install Jupyter</h3>
+<pre><code class="lang-bash">virtualenv venv
+
+<span class="hljs-built_in">source</span> ./venv/bin/activate
+
+pip install jupyter
+</code></pre>
+<h3 id="build-and-install-toree">Build and install Toree</h3>
+<p>Clone master into your working directory from Toree&apos;s <a href="https://github.com/apache/incubator-toree/blob/master/README.md" target="_blank">github repo</a>.</p>
+<p>For this next step, you&apos;ll need to make sure that docker is running.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> incubator-toree
+make release
+<span class="hljs-built_in">cd</span> dist/toree-pip
+pip install .
+
+SPARK_HOME=&lt;path to spark&gt; jupyter toree install
+</code></pre>
+<h3 id="launch-notebook-with-mleap-for-spark">Launch Notebook with MLeap for Spark</h3>
+<p>The most error-proof way to add mleap to your project is to modify the kernel directly (or create a new one for Toree and Spark 2.0).</p>
+<p>Kernel config files are typically located in <code>/usr/local/share/jupyter/kernels/apache_toree_scala/kernel.json</code></p>
+<p>Go ahead and add or modify <code>__TOREE_SPARK_OPTS__</code> like so:</p>
+<pre><code class="lang-bash"><span class="hljs-string">&quot;__TOREE_SPARK_OPTS__&quot;</span>: <span class="hljs-string">&quot;--packages com.databricks:spark-avro_2.11:3.0.1,ml.combust.mleap:mleap-spark_2.11:0.5.0,&quot;</span>
+</code></pre>
+<p>An alternative way is to use AddDeps Magics, but we&apos;ve run into dependency collisions, so do so at your own risk:</p>
+<p><code>%AddDeps ml.combust.mleap mleap-spark_2.11 0.5.0 --transitive</code></p>
+<h3 id="launch-notebook-with-mleap-for-pyspark">Launch Notebook with MLeap for PySpark</h3>
+<p>First go through the steps above for launching a notebook with MLeap for Spark, then add the following to <code>PYTHONPATH</code></p>
+<pre><code class="lang-bash">    <span class="hljs-string">&quot;PYTHONPATH&quot;</span>: <span class="hljs-string">&quot;/usr/local/spark-2.0.0-bin-hadoop2.7/python:/usr/local/spark-2.0.0-bin-hadoop2.7/python/lib/py4j-0.10.1-src.zip:/Users/mikhail/combust/combust-mleap/python&quot;</span>,
+</code></pre>
+<h3 id="launch-notebook-with-mleap-for-scikit-learn">Launch Notebook with MLeap for Scikit-Learn</h3>
+<p>No need to modify the <code>kernel.json</code> directly, just instantiate the libraries like described <a href="../scikit-learn/">here</a>.</p>
+
                                 
                                 </section>
                             
@@ -860,7 +899,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Jupyter","level":"1.9.2","depth":2,"next":{"title":"Databricks","level":"1.9.3","depth":2,"path":"notebooks/databricks.md","ref":"notebooks/databricks.md","articles":[]},"previous":{"title":"Zeppelin","level":"1.9.1","depth":2,"path":"notebooks/zeppelin.md","ref":"notebooks/zeppelin.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notebooks/jupyter.md","mtime":"2017-01-23T01:55:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:58:14.266Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Jupyter","level":"1.9.2","depth":2,"next":{"title":"Databricks","level":"1.9.3","depth":2,"path":"notebooks/databricks.md","ref":"notebooks/databricks.md","articles":[]},"previous":{"title":"Zeppelin","level":"1.9.1","depth":2,"path":"notebooks/zeppelin.md","ref":"notebooks/zeppelin.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notebooks/jupyter.md","mtime":"2017-01-23T02:57:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T03:59:51.313Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

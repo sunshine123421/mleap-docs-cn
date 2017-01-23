@@ -393,12 +393,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../scikit-learn/bundle.html">
+        <li class="chapter " data-level="1.5.1" data-path="../scikit-learn/transformers.html">
             
-                <a href="../scikit-learn/bundle.html">
+                <a href="../scikit-learn/transformers.html">
             
                     
-                    Serialization
+                    Transformers Guide
             
                 </a>
             
@@ -817,7 +817,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="demo-notebooks">Demo Notebooks</h1>
+<p>We have put together a number of notebooks to demonstrate MLeap usage with Spark, Scikit and soon TensorFlow. The demo notebooks can be found on our <a href="https://github.com/combust/mleap-demo" target="_blank">mleap-demo</a> github repository. Child pages below also include instructions for how to include MLeap within your notebook environment of choice.</p>
+<p>Our goal is to maintain parity between notebooks for Jupyter/Zeppelin/DataBricks and Spark/Scikit/TensorFlow. 
+Here is a list of demo notebooks we have available today:</p>
+<h3 id="airbnb-price-prediction">AirBnb Price Prediction</h3>
+<p>Using a snapshot of historical AirBnb listings data, build a ML Pipeline to model the price of an appartment based on features like <code>number of rooms</code>, <code>number of bathrooms</code>, <code>square feet</code> and others. The notebook demonstrates how to train and serialize both a linear regression and a random forest model. This notebook also shows deserialization of a bundle as well as scoring of new LeapFrames without the Spark Context with MLeap Runtime.</p>
+<ul>
+<li><a href="https://github.com/combust/mleap-demo/blob/master/notebooks/airbnb-price-regression.ipynb" target="_blank">Code for Spark</a></li>
+<li><a href="https://github.com/combust/mleap-demo/blob/master/notebooks/PySpark%20-%20AirBnb.ipynb" target="_blank">Code for PySpark</a></li>
+<li><a href="https://github.com/combust/mleap-demo/blob/master/notebooks/airbnb-price-regression-scikit.ipynb" target="_blank">Code for Scikit-Learn</a></li>
+</ul>
+<h3 id="lending-club-loan-approval">Lending Club Loan Approval</h3>
+<p>Using the public Lending Club dataset to determine whether the applicant is approved for a loan or not, we build an ML Pipeline and train a logistic regression and a random forest classifier. We also show an example of how to deploy the two models to an API server. For an example of deserialization and MLeap runtime, see the AirBnb demo above (we&apos;ll add it here too).</p>
+<ul>
+<li><a href="https://github.com/combust/mleap-demo/blob/master/notebooks/lending-club-classifier-demo.ipynb" target="_blank">Code for Spark</a></li>
+</ul>
+<h3 id="mnist-digits-recognition">MNIST Digits Recognition</h3>
+<p>This demo uses the popular MNIST dataset and demonstrates usage and serialization of more complicated transformers like <code>PCA</code> to train a random forest classifier and serialize it to a bundle. The goal of this demo is to demonstrate that even for more complex transformers, MLeap saves developers potentially days of writing and maintaining code to support features like PCA and random forest models.</p>
+<ul>
+<li><a href="https://github.com/combust/mleap-demo/blob/master/zeppelin/mnist-mleap-demo-code.json" target="_blank">Code for Spark</a> - Zeppelin only for now</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -860,7 +881,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Notebooks","level":"1.9","depth":1,"next":{"title":"Zeppelin","level":"1.9.1","depth":2,"path":"notebooks/zeppelin.md","ref":"notebooks/zeppelin.md","articles":[]},"previous":{"title":"MNIST","level":"1.8.1","depth":2,"path":"demos/mnist.md","ref":"demos/mnist.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notebooks/index.md","mtime":"2017-01-23T01:55:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:58:14.266Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Notebooks","level":"1.9","depth":1,"next":{"title":"Zeppelin","level":"1.9.1","depth":2,"path":"notebooks/zeppelin.md","ref":"notebooks/zeppelin.md","articles":[]},"previous":{"title":"MNIST","level":"1.8.1","depth":2,"path":"demos/mnist.md","ref":"demos/mnist.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notebooks/index.md","mtime":"2017-01-23T02:57:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T03:59:51.313Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
