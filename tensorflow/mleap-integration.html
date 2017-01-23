@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Building from Source · GitBook</title>
+        <title>MLeap Integration · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../core-concepts/" />
+    <link rel="next" href="bundle-serialization.html" />
     
     
-    <link rel="prev" href="tensorflow.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -103,9 +103,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="./">
+        <li class="chapter " data-level="1.1.1" data-path="../getting-started/">
             
-                <a href="./">
+                <a href="../getting-started/">
             
                     
                     Getting Started
@@ -116,9 +116,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.2" data-path="mleap.html">
+        <li class="chapter " data-level="1.1.2" data-path="../getting-started/mleap.html">
             
-                <a href="mleap.html">
+                <a href="../getting-started/mleap.html">
             
                     
                     Getting Started with MLeap
@@ -129,9 +129,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.3" data-path="spark.html">
+        <li class="chapter " data-level="1.1.3" data-path="../getting-started/spark.html">
             
-                <a href="spark.html">
+                <a href="../getting-started/spark.html">
             
                     
                     Getting Started with Spark
@@ -142,9 +142,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.4" data-path="py-spark.html">
+        <li class="chapter " data-level="1.1.4" data-path="../getting-started/py-spark.html">
             
-                <a href="py-spark.html">
+                <a href="../getting-started/py-spark.html">
             
                     
                     Getting Started with PySpark
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.5" data-path="scikit-learn.html">
+        <li class="chapter " data-level="1.1.5" data-path="../getting-started/scikit-learn.html">
             
-                <a href="scikit-learn.html">
+                <a href="../getting-started/scikit-learn.html">
             
                     
                     Getting Started with Scikit-learn
@@ -168,9 +168,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.6" data-path="tensorflow.html">
+        <li class="chapter " data-level="1.1.6" data-path="../getting-started/tensorflow.html">
             
-                <a href="tensorflow.html">
+                <a href="../getting-started/tensorflow.html">
             
                     
                     Getting Started with Tensorflow
@@ -181,9 +181,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.7" data-path="building.html">
+        <li class="chapter " data-level="1.1.7" data-path="../getting-started/building.html">
             
-                <a href="building.html">
+                <a href="../getting-started/building.html">
             
                     
                     Building from Source
@@ -411,9 +411,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../tensorflow/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../tensorflow/">
+                <a href="./">
             
                     
                     Tensorflow
@@ -425,9 +425,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../tensorflow/mleap-integration.html">
+        <li class="chapter active" data-level="1.6.1" data-path="mleap-integration.html">
             
-                <a href="../tensorflow/mleap-integration.html">
+                <a href="mleap-integration.html">
             
                     
                     MLeap Integration
@@ -438,9 +438,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../tensorflow/bundle-serialization.html">
+        <li class="chapter " data-level="1.6.2" data-path="bundle-serialization.html">
             
-                <a href="../tensorflow/bundle-serialization.html">
+                <a href="bundle-serialization.html">
             
                     
                     Bundle Serialization
@@ -802,7 +802,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Building from Source</a>
+        <a href=".." >MLeap Integration</a>
     </h1>
 </div>
 
@@ -817,54 +817,178 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="building-mleap-from-source">Building MLeap From Source</h1>
-<p>MLeap is hosted on <a href="https://github.com/combust/mleap" target="_blank">Github</a> as a
-public project. Building MLeap is very straightforward and has very few
-dependencies. Here are instructions for building from source.</p>
-<h2 id="install-sbt">Install SBT</h2>
-<p><a href="http://www.scala-sbt.org/0.13/docs/Setup.html" target="_blank">Install Simple Build Tool</a>,
-which is used to build many Scala projects.</p>
-<h2 id="compiling-core-mleap">Compiling Core MLeap</h2>
-<p>The core of MLeap includes every submodule except for Tensorflow
-integration. We do not include Tensorflow in the core build because its
-dependencies can be difficult to install.</p>
-<h3 id="clone-the-github-repository">Clone the Github Repository</h3>
-<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/combust/mleap.git
-<span class="hljs-built_in">cd</span> mleap
-</code></pre>
-<h3 id="initialize-git-submodules">Initialize Git Submodules</h3>
-<p>MLeap depends on a git submodule for all of the protobuf definitions, so
-we need to initialize and update them.</p>
-<pre><code class="lang-bash">git submodule init
-git submodule update
-</code></pre>
-<h3 id="compile-mleap">Compile MLeap</h3>
-<p>There are many submodules that make up the MLeap project. All of them
-are aggregated to the root SBT project. This means running a command
-from SBT will cause the command to be run on all subprojects.</p>
-<pre><code class="lang-bash">sbt compile
-</code></pre>
-<h3 id="run-the-tests">Run the Tests</h3>
-<p>MLeap has exensive testing, including full parity tests between MLeap
-and Spark transformers.</p>
-<pre><code class="lang-bash">sbt <span class="hljs-built_in">test</span>
-</code></pre>
-<h2 id="compiling-tensorflow-support">Compiling Tensorflow Support</h2>
-<p>Compiling the <code>mleap-tensorflow</code> submodule does not happen
-automatically. Instead, we first need to compile Tensorflow and install
-the Tensorflow Java jar to our local maven2 repository.</p>
-<h3 id="compileinstall-tensorflow">Compile/Install Tensorflow</h3>
-<p>Tensorflow has a great set of isntructions for compiling and installing.</p>
+                                <h1 id="tensorflow-mleap-integration">Tensorflow MLeap Integration</h1>
+<p>MLeap supports integration with pre-trained Tensorflow graphs. MLeap uses the Swig bindings provided with Tensorflow to call down to Tensorflow C++ libraries after converting from MLeap data types to the required C++ tensor types.</p>
+<h2 id="mleap-tensorflow-transformer">MLeap Tensorflow Transformer</h2>
+<p>The MLeap Tensorflow transformer is built with a Tensorflow graph file that was saved using the <code>freeze_graph</code> function. When the transformer lazily initializes a Tensorflow sessions on the first request to transform a leap frame. Once the sessions is started, it remains open until the <code>close</code> method is called on the MLeap Tensorflow transformer.</p>
+<p>The data in the LeapFrame should be in the proper format when handed to the Tensorflow transformer, so that the proper conversions to Tensorflow data types occurs. See the <a href="#type-conversions">Type Conversions</a> section for how converting to Tensorflow types works.</p>
+<p>The transformer then outputs a list of tensors as the raw Tensorflow output field, along with individual columns for all output tensors specified. The intermediate output list is needed because of the way MLeap works currently, but we may get rid of it in the future. See <a href="#example">Example</a> for an example of how a Tensorflow graph can be executed against a LeapFrame. The output types of the tensors are needed ahead of time so that we know how to form the new LeapFrame after transforming.</p>
+<h3 id="mleap-tensorflow-model">MLeap Tensorflow Model</h3>
+<p>The model is responsible for maintaining the Tensorflow session. It is a Java <code>Closeable</code> and needs to be closed when the MLeap transformer or other controlling object no longer needs use of the resources. The model will close the Tensorflow sessions when finalized, just in case the user forgets to call this method. The output of the model is a <code>Seq</code> of MLeap <code>Tensor</code> that contains the outputs in the same order specified by the given shape.</p>
+<p>In order to support transformations using Tensorflow with MLeap data types, the following information is needed.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>graph</td>
+<td>The Tensorflow GraphDef saved with <strong>freeze_graph</strong></td>
+</tr>
+<tr>
+<td>shape</td>
+<td>Inputs/outputs along with non-optional type specification</td>
+</tr>
+<tr>
+<td>nodes</td>
+<td>String list of nodes to run without saving output</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type-conversions">Type Conversions</h2>
+<p>All basic data types have implicit conversions to Tensorflow tensors of rank 0. The <code>Tensor</code> data type in MLeap converts pretty much one-to-one with Tensorflow tensors. <code>SparseTensor</code> values are first converted to dense tensors before being passed in to Tensorflow.</p>
+<p>Here is the list of currently-supported Tensorflow data types.</p>
+<table>
+<thead>
+<tr>
+<th>Tensorflow Data Type</th>
+<th>MLeap Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DT_BOOLEAN</td>
+<td>BooleanType</td>
+</tr>
+<tr>
+<td>DT_STRING</td>
+<td>StringType</td>
+</tr>
+<tr>
+<td>DT_INT32</td>
+<td>IntegerType</td>
+</tr>
+<tr>
+<td>DT_INT64</td>
+<td>LongType</td>
+</tr>
+<tr>
+<td>DT_FLOAT</td>
+<td>FloatType</td>
+</tr>
+<tr>
+<td>DT_DOUBLE</td>
+<td>DoubleType</td>
+</tr>
+<tr>
+<td><em>Tensor</em></td>
+<td>TensorType</td>
+</tr>
+</tbody>
+</table>
+<p>Because the Swig wrappers do not provide support for all data types, we recommend adding in casting steps to your Tensorflow graph to integrate with MLeap.</p>
+<h3 id="notes">Notes</h3>
 <ol>
-<li><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md" target="_blank">Tensorflow</a></li>
-<li><a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/java" target="_blank">Tensorflow Java Bindings</a>.</li>
+<li>Unsigned integer types, 8-bit, and 16-bit integers are not supported by the Swig wrappers</li>
+<li>Complex types are not supported by the Swig wrappers</li>
 </ol>
-<h3 id="build-tensorflow-mleap-module">Build Tensorflow MLeap Module</h3>
-<pre><code class="lang-bash">sbt mleap-tensorflow/compile
-</code></pre>
-<h3 id="run-tensorflow-integration-tests">Run Tensorflow Integration Tests</h3>
-<pre><code class="lang-bash">TENSORFLOW_JNI=/path/to/tensorflow/library/folder/java sbt mleap-tensorflow/<span class="hljs-built_in">test</span>
-</code></pre>
+<h1 id="example">Example</h1>
+<p>Say we have an input LeapFrame that has the following data. A scala double and a 1-dimensional double tensor (also known as a vector of doubles).</p>
+<h2 id="input-leap-frame">Input Leap Frame</h2>
+<h3 id="data">Data</h3>
+<table>
+<thead>
+<tr>
+<th>double1</th>
+<th>tensor1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.0</td>
+<td>[2.0, 1.0, 5.0]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="types">Types</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double1</td>
+<td>DoubleType()</td>
+</tr>
+<tr>
+<td>tensor1</td>
+<td>TensorType(DoubleType(false))</td>
+</tr>
+</tbody>
+</table>
+<p>If we run this LeapFrame through a Tensorflow transformer that uses the <code>double1</code> value to scale the <code>tensor1</code> value and we specify we want the scaled output tensor, then the output LeapFrame will look like this:</p>
+<h2 id="output-leap-frame">Output Leap Frame</h2>
+<h3 id="data">Data</h3>
+<table>
+<thead>
+<tr>
+<th>double1</th>
+<th>tensor1</th>
+<th>raw_tf_tensors</th>
+<th>output1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.0</td>
+<td>[2.0, 1.0, 5.0]</td>
+<td>Seq([6.0, 3.0, 15.0])</td>
+<td>[6.0, 3.0, 15.0]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="types">Types</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double1</td>
+<td>DoubleType()</td>
+<td></td>
+</tr>
+<tr>
+<td>tensor1</td>
+<td>TensorType(DoubleType(false))</td>
+<td></td>
+</tr>
+<tr>
+<td>raw_tf_tensors</td>
+<td>ListType(AnyType(false))</td>
+<td>Raw return types unknown, nulls are not allowed</td>
+</tr>
+<tr>
+<td>output1</td>
+<td>TensorType(DoubleType(false))</td>
+<td>Underlying type known at this point, and reflected in the LeapFrame</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ol>
+<li>The <code>raw_tf_tensors</code> field contains an <code>AnyType</code>, which means that it is not serializable. If using Combust API servers, you will have to filter this value out when retrieving results.</li>
+</ol>
 
                                 
                                 </section>
@@ -892,12 +1016,12 @@ the Tensorflow Java jar to our local maven2 repository.</p>
 
             
                 
-                <a href="tensorflow.html" class="navigation navigation-prev " aria-label="Previous page: Getting Started with Tensorflow">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Tensorflow">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../core-concepts/" class="navigation navigation-next " aria-label="Next page: Core Concepts">
+                <a href="bundle-serialization.html" class="navigation navigation-next " aria-label="Next page: Bundle Serialization">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -908,7 +1032,7 @@ the Tensorflow Java jar to our local maven2 repository.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building from Source","level":"1.1.7","depth":2,"next":{"title":"Core Concepts","level":"1.2","depth":1,"path":"core-concepts/index.md","ref":"core-concepts/index.md","articles":[{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Supported Transformers","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/support.md","ref":"core-concepts/transformers/support.md","articles":[]}]},{"title":"Pipelines","level":"1.2.3","depth":2,"path":"core-concepts/pipelines.md","ref":"core-concepts/pipelines.md","articles":[]},{"title":"MLeap Bundles","level":"1.2.4","depth":2,"path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md","articles":[{"title":"Structure","level":"1.2.4.1","depth":3,"anchor":"#bundle-structure","path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md#bundle-structure","articles":[]},{"title":"Examples","level":"1.2.4.2","depth":3,"anchor":"#mleap-bundle-examples","path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md#mleap-bundle-examples","articles":[]}]},{"title":"MLeap Runtime","level":"1.2.5","depth":2,"path":"core-concepts/mleap-runtime.md","ref":"core-concepts/mleap-runtime.md","articles":[]}]},"previous":{"title":"Getting Started with Tensorflow","level":"1.1.6","depth":2,"path":"getting-started/tensorflow.md","ref":"getting-started/tensorflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"getting-started/building.md","mtime":"2017-01-21T22:18:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:55:38.865Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MLeap Integration","level":"1.6.1","depth":2,"next":{"title":"Bundle Serialization","level":"1.6.2","depth":2,"path":"tensorflow/bundle-serialization.md","ref":"tensorflow/bundle-serialization.md","articles":[]},"previous":{"title":"Tensorflow","level":"1.6","depth":1,"path":"tensorflow/index.md","ref":"tensorflow/index.md","articles":[{"title":"MLeap Integration","level":"1.6.1","depth":2,"path":"tensorflow/mleap-integration.md","ref":"tensorflow/mleap-integration.md","articles":[]},{"title":"Bundle Serialization","level":"1.6.2","depth":2,"path":"tensorflow/bundle-serialization.md","ref":"tensorflow/bundle-serialization.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tensorflow/mleap-integration.md","mtime":"2017-01-23T01:04:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:55:38.865Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

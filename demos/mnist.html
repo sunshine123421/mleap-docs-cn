@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Building from Source · GitBook</title>
+        <title>MNIST · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../core-concepts/" />
+    <link rel="next" href="../notebooks/" />
     
     
-    <link rel="prev" href="tensorflow.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -103,9 +103,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="./">
+        <li class="chapter " data-level="1.1.1" data-path="../getting-started/">
             
-                <a href="./">
+                <a href="../getting-started/">
             
                     
                     Getting Started
@@ -116,9 +116,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.2" data-path="mleap.html">
+        <li class="chapter " data-level="1.1.2" data-path="../getting-started/mleap.html">
             
-                <a href="mleap.html">
+                <a href="../getting-started/mleap.html">
             
                     
                     Getting Started with MLeap
@@ -129,9 +129,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.3" data-path="spark.html">
+        <li class="chapter " data-level="1.1.3" data-path="../getting-started/spark.html">
             
-                <a href="spark.html">
+                <a href="../getting-started/spark.html">
             
                     
                     Getting Started with Spark
@@ -142,9 +142,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.4" data-path="py-spark.html">
+        <li class="chapter " data-level="1.1.4" data-path="../getting-started/py-spark.html">
             
-                <a href="py-spark.html">
+                <a href="../getting-started/py-spark.html">
             
                     
                     Getting Started with PySpark
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.5" data-path="scikit-learn.html">
+        <li class="chapter " data-level="1.1.5" data-path="../getting-started/scikit-learn.html">
             
-                <a href="scikit-learn.html">
+                <a href="../getting-started/scikit-learn.html">
             
                     
                     Getting Started with Scikit-learn
@@ -168,9 +168,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.6" data-path="tensorflow.html">
+        <li class="chapter " data-level="1.1.6" data-path="../getting-started/tensorflow.html">
             
-                <a href="tensorflow.html">
+                <a href="../getting-started/tensorflow.html">
             
                     
                     Getting Started with Tensorflow
@@ -181,9 +181,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.7" data-path="building.html">
+        <li class="chapter " data-level="1.1.7" data-path="../getting-started/building.html">
             
-                <a href="building.html">
+                <a href="../getting-started/building.html">
             
                     
                     Building from Source
@@ -682,9 +682,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../demos/">
+        <li class="chapter " data-level="1.8" data-path="./">
             
-                <a href="../demos/">
+                <a href="./">
             
                     
                     Demos
@@ -696,9 +696,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../demos/mnist.html">
+        <li class="chapter active" data-level="1.8.1" data-path="mnist.html">
             
-                <a href="../demos/mnist.html">
+                <a href="mnist.html">
             
                     
                     MNIST
@@ -802,7 +802,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Building from Source</a>
+        <a href=".." >MNIST</a>
     </h1>
 </div>
 
@@ -817,54 +817,130 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="building-mleap-from-source">Building MLeap From Source</h1>
-<p>MLeap is hosted on <a href="https://github.com/combust/mleap" target="_blank">Github</a> as a
-public project. Building MLeap is very straightforward and has very few
-dependencies. Here are instructions for building from source.</p>
-<h2 id="install-sbt">Install SBT</h2>
-<p><a href="http://www.scala-sbt.org/0.13/docs/Setup.html" target="_blank">Install Simple Build Tool</a>,
-which is used to build many Scala projects.</p>
-<h2 id="compiling-core-mleap">Compiling Core MLeap</h2>
-<p>The core of MLeap includes every submodule except for Tensorflow
-integration. We do not include Tensorflow in the core build because its
-dependencies can be difficult to install.</p>
-<h3 id="clone-the-github-repository">Clone the Github Repository</h3>
-<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/combust/mleap.git
-<span class="hljs-built_in">cd</span> mleap
+                                <h1 id="mnist-demo">MNIST Demo</h1>
+<p>This tutorial shows you how to use MLeap and Bundle.ML components to export a trained Spark ML Pipeline and use MLeap to transform new data without any dependencies on the Spark Context.</p>
+<p>We will construct an ML Pipeline comprised of a Vector Assembler, a Binarizer, PCA and a Random Forest Model for handwritten image classification on the MNIST dataset. The goal of this exercise is not to train the optimal model, but rather to demonstrate the simplicity of going from training a pipeline in Spark and deploying that same pipeline (data processing + the algorithm) outside of Spark.</p>
+<p>The code for this tutorial is split up into two parts:</p>
+<ul>
+<li>Spark ML Pipeline Code: Vanilla/out-of-the-box Spark code to train the ML Pipeline, which we serialize to Bundle.ML</li>
+<li>MLeap Code: Load the serialized Bundle to Mleap and transform Leap Frames</li>
+</ul>
+<p>Some terms before we begin:</p>
+<h4 id="nouns">Nouns</h4>
+<ul>
+<li>Estimator: The actual learning algorithms that train/fit the transformer against the data frame and produces a Model</li>
+<li>Model: In Spark, the model is the code and metadata needed to score against an already trained algorithm </li>
+<li>Transformer: Anything that transforms a data frame, does not necessarily be trained by an estimator (i.e. a Binarizer)</li>
+<li>LeapFrame: A dataframe structure used for storing your data and the associated schema</li>
+</ul>
+<h3 id="train-a-spark-pipeline">Train a Spark Pipeline</h3>
+<h4 id="load-the-data">Load the data</h4>
+<pre><code class="lang-scala"><span class="hljs-comment">// Note that we are taking advantage of com.databricks:spark-csv package to load the data</span>
+<span class="hljs-keyword">import</span> org.apache.spark.ml.feature.{<span class="hljs-type">VectorAssembler</span>,<span class="hljs-type">StringIndexer</span>,<span class="hljs-type">IndexToString</span>, <span class="hljs-type">Binarizer</span>}
+<span class="hljs-keyword">import</span> org.apache.spark.ml.classification.{<span class="hljs-type">RandomForestClassificationModel</span>, <span class="hljs-type">RandomForestClassifier</span>}
+<span class="hljs-keyword">import</span> org.apache.spark.ml.evaluation.{<span class="hljs-type">MulticlassClassificationEvaluator</span>}
+<span class="hljs-keyword">import</span> org.apache.spark.ml.{<span class="hljs-type">Pipeline</span>,<span class="hljs-type">PipelineModel</span>}
+<span class="hljs-keyword">import</span> org.apache.spark.ml.feature.<span class="hljs-type">PCA</span>
+
+<span class="hljs-keyword">val</span> datasetPath = <span class="hljs-string">&quot;./mleap-demo/data/mnist/mnist_train.csv&quot;</span>
+<span class="hljs-keyword">var</span> dataset = spark.sqlContext.read.format(<span class="hljs-string">&quot;com.databricks.spark.csv&quot;</span>).
+                 option(<span class="hljs-string">&quot;header&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>).
+                 option(<span class="hljs-string">&quot;inferSchema&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>).
+                 load(datasetPath)
+
+<span class="hljs-keyword">val</span> testDatasetPath = <span class="hljs-string">&quot;./mleap-demo/data/mnist/mnist_test.csv&quot;</span>
+<span class="hljs-keyword">var</span> test = spark.sqlContext.read.format(<span class="hljs-string">&quot;com.databricks.spark.csv&quot;</span>).
+                 option(<span class="hljs-string">&quot;inferSchema&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>).
+                 option(<span class="hljs-string">&quot;header&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>).
+                 load(testDatasetPath)
 </code></pre>
-<h3 id="initialize-git-submodules">Initialize Git Submodules</h3>
-<p>MLeap depends on a git submodule for all of the protobuf definitions, so
-we need to initialize and update them.</p>
-<pre><code class="lang-bash">git submodule init
-git submodule update
+<p>You can download the <a href="https://s3-us-west-2.amazonaws.com/mleap-demo/mnist/mnist_train.csv.gz" target="_blank">training</a> and <a href="https://s3-us-west-2.amazonaws.com/mleap-demo/mnist/mnist_test.csv.gz" target="_blank">test</a> dataset (gzipped from s3) and of course you&apos;ll have to adjust the <code>datasetPath</code> and <code>testDatasetPath</code>.</p>
+<p>The original data is hosted on <a href="http://yann.lecun.com/exdb/mnist/" target="_blank">Yann LeCun&apos;s website</a>.</p>
+<h4 id="build-the-ml-data-pipeline">Build the ML Data Pipeline</h4>
+<pre><code class="lang-scala"><span class="hljs-comment">// Define Dependent and Independent Features</span>
+<span class="hljs-keyword">val</span> predictionCol = <span class="hljs-string">&quot;label&quot;</span>
+<span class="hljs-keyword">val</span> labels = <span class="hljs-type">Seq</span>(<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;2&quot;</span>,<span class="hljs-string">&quot;3&quot;</span>,<span class="hljs-string">&quot;4&quot;</span>,<span class="hljs-string">&quot;5&quot;</span>,<span class="hljs-string">&quot;6&quot;</span>,<span class="hljs-string">&quot;7&quot;</span>,<span class="hljs-string">&quot;8&quot;</span>,<span class="hljs-string">&quot;9&quot;</span>)
+<span class="hljs-keyword">val</span> pixelFeatures = (<span class="hljs-number">0</span> until <span class="hljs-number">784</span>).map(x =&gt; <span class="hljs-string">s&quot;x<span class="hljs-subst">$x</span>&quot;</span>).toArray
+
+<span class="hljs-keyword">val</span> layers = <span class="hljs-type">Array</span>[<span class="hljs-type">Int</span>](pixelFeatures.length, <span class="hljs-number">784</span>, <span class="hljs-number">800</span>, labels.length)
+
+<span class="hljs-keyword">val</span> vector_assembler = <span class="hljs-keyword">new</span> <span class="hljs-type">VectorAssembler</span>().
+  setInputCols(featureColumns).
+  setOutputCol(<span class="hljs-string">&quot;features&quot;</span>)
+
+<span class="hljs-keyword">val</span> stringIndexer = <span class="hljs-keyword">new</span> <span class="hljs-type">StringIndexer</span>().
+  setInputCol(predictionCol).
+  setOutputCol(<span class="hljs-string">&quot;label_index&quot;</span>).
+  fit(dataset)
+
+
+<span class="hljs-keyword">val</span> binarizer = <span class="hljs-keyword">new</span> <span class="hljs-type">Binarizer</span>().
+  setInputCol(vector_assembler.getOutputCol).
+  setThreshold(<span class="hljs-number">127.5</span>).
+  setOutputCol(<span class="hljs-string">&quot;binarized_features&quot;</span>)
+
+<span class="hljs-keyword">val</span> pca = <span class="hljs-keyword">new</span> <span class="hljs-type">PCA</span>().
+  setInputCol(binarizer.getOutputCol).
+  setOutputCol(<span class="hljs-string">&quot;pcaFeatures&quot;</span>).
+  setK(<span class="hljs-number">10</span>)
+
+<span class="hljs-keyword">val</span> featurePipeline = <span class="hljs-keyword">new</span> <span class="hljs-type">Pipeline</span>().setStages(<span class="hljs-type">Array</span>(vector_assembler, stringIndexer, binarizer, pca))
+
+<span class="hljs-comment">// Transform the raw data with the feature pipeline and persist it</span>
+<span class="hljs-keyword">val</span> featureModel = featurePipeline.fit(dataset)
+
+<span class="hljs-keyword">val</span> datasetWithFeatures = featureModel.transform(dataset)
+
+<span class="hljs-comment">// Select only the data needed for training and persist it</span>
+<span class="hljs-keyword">val</span> datasetPcaFeaturesOnly = datasetWithFeatures.select(stringIndexer.getOutputCol, pca.getOutputCol)
+<span class="hljs-keyword">val</span> datasetPcaFeaturesOnlyPersisted = datasetPcaFeaturesOnly.persist()
 </code></pre>
-<h3 id="compile-mleap">Compile MLeap</h3>
-<p>There are many submodules that make up the MLeap project. All of them
-are aggregated to the root SBT project. This means running a command
-from SBT will cause the command to be run on all subprojects.</p>
-<pre><code class="lang-bash">sbt compile
+<p>We could make the random forest model be part of the same pipeline, however, there is an existing bug (<a href="https://issues.apache.org/jira/browse/SPARK-16845" target="_blank">SPARK-16845</a>] that prevents us from doing that (will be fixed in 2.2.0).</p>
+<h4 id="train-a-random-forest-model">Train a Random Forest Model</h4>
+<pre><code class="lang-scala"><span class="hljs-comment">// You can optionally experiment with CrossValidator and MulticlassClassificationEvaluator to determine optimal</span>
+<span class="hljs-comment">// settings for the random forest</span>
+
+<span class="hljs-keyword">val</span> rf = <span class="hljs-keyword">new</span> <span class="hljs-type">RandomForestClassifier</span>().
+      setFeaturesCol(pca.getOutputCol).
+      setLabelCol(stringIndexer.getOutputCol).
+      setPredictionCol(<span class="hljs-string">&quot;prediction&quot;</span>).
+      setProbabilityCol(<span class="hljs-string">&quot;probability&quot;</span>).
+      setRawPredictionCol(<span class="hljs-string">&quot;raw_prediction&quot;</span>)
+
+<span class="hljs-keyword">val</span> rfModel = rf.fit(datasetPcaFeaturesOnlyPersisted)
 </code></pre>
-<h3 id="run-the-tests">Run the Tests</h3>
-<p>MLeap has exensive testing, including full parity tests between MLeap
-and Spark transformers.</p>
-<pre><code class="lang-bash">sbt <span class="hljs-built_in">test</span>
+<h4 id="serialize-the-ml-data-pipeline-and-rf-model-to-bundleml">Serialize the ML Data Pipeline and RF Model to Bundle.ML</h4>
+<pre><code class="lang-scala"><span class="hljs-keyword">import</span> org.apache.spark.ml.mleap.<span class="hljs-type">SparkUtil</span>
+
+<span class="hljs-keyword">val</span> pipeline = <span class="hljs-type">SparkUtil</span>.createPipelineModel(uid = <span class="hljs-string">&quot;pipeline&quot;</span>, <span class="hljs-type">Array</span>(featureModel, rfModel))
+
+<span class="hljs-keyword">val</span> sbc = <span class="hljs-type">SparkBundleContext</span>()
+<span class="hljs-keyword">for</span>(bf &lt;- managed(<span class="hljs-type">BundleFile</span>(<span class="hljs-string">&quot;jar:file:/tmp/mnist.model.rf.zip&quot;</span>))) {
+        pipeline.writeBundle.save(bf)(sbc).get
+      }
 </code></pre>
-<h2 id="compiling-tensorflow-support">Compiling Tensorflow Support</h2>
-<p>Compiling the <code>mleap-tensorflow</code> submodule does not happen
-automatically. Instead, we first need to compile Tensorflow and install
-the Tensorflow Java jar to our local maven2 repository.</p>
-<h3 id="compileinstall-tensorflow">Compile/Install Tensorflow</h3>
-<p>Tensorflow has a great set of isntructions for compiling and installing.</p>
-<ol>
-<li><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md" target="_blank">Tensorflow</a></li>
-<li><a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/java" target="_blank">Tensorflow Java Bindings</a>.</li>
-</ol>
-<h3 id="build-tensorflow-mleap-module">Build Tensorflow MLeap Module</h3>
-<pre><code class="lang-bash">sbt mleap-tensorflow/compile
+<h3 id="deserialize-to-mleap-and-score-new-data">Deserialize to MLeap and Score New Data</h3>
+<p>The goal of this step is to show how to deserialize a <code>bundle</code> and use it to score LeapFrames without any Spark dependencies. You can download the <a href="https://s3-us-west-2.amazonaws.com/mleap-demo/mnist/mnist.json" target="_blank">mnist.json</a> from our s3 bucket.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">import</span> ml.combust.bundle.<span class="hljs-type">BundleFile</span>
+<span class="hljs-keyword">import</span> ml.combust.mleap.<span class="hljs-type">MleapSupport</span>._
+
+<span class="hljs-comment">// load the Spark pipeline we saved in the previous section</span>
+<span class="hljs-keyword">val</span> bundle = <span class="hljs-type">BundleFile</span>(<span class="hljs-string">&quot;/tmp/mnist-spark-pipeline.zip&quot;</span>).load().get
 </code></pre>
-<h3 id="run-tensorflow-integration-tests">Run Tensorflow Integration Tests</h3>
-<pre><code class="lang-bash">TENSORFLOW_JNI=/path/to/tensorflow/library/folder/java sbt mleap-tensorflow/<span class="hljs-built_in">test</span>
+<p>Load the sample LeapFrame from the mleap-demo git repo (data/mnist.json)</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">import</span> ml.combust.mleap.runtime.serialization.<span class="hljs-type">FrameReader</span>
+
+<span class="hljs-keyword">val</span> s = scala.io.<span class="hljs-type">Source</span>.fromURL(<span class="hljs-string">&quot;file:///./mleap-demo/mnist.json&quot;</span>).mkString
+
+<span class="hljs-keyword">val</span> bytes = s.getBytes(<span class="hljs-string">&quot;UTF-8&quot;</span>)
+<span class="hljs-keyword">val</span> frame = <span class="hljs-type">FrameReader</span>(<span class="hljs-string">&quot;ml.combust.mleap.json&quot;</span>).fromBytes(bytes)
+
+<span class="hljs-comment">// transform the dataframe using our pipeline</span>
+<span class="hljs-keyword">val</span> mleapPipeline = bundle.root
+<span class="hljs-keyword">val</span> frame2 = mleapPipeline.transform(frame).get
+<span class="hljs-keyword">val</span> data = frame2.dataset
 </code></pre>
+<p>What next? You can find more examples and notebooks <a href="https://github.com/combust/mleap-demo" target="_blank">here</a>.</p>
 
                                 
                                 </section>
@@ -892,12 +968,12 @@ the Tensorflow Java jar to our local maven2 repository.</p>
 
             
                 
-                <a href="tensorflow.html" class="navigation navigation-prev " aria-label="Previous page: Getting Started with Tensorflow">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Demos">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../core-concepts/" class="navigation navigation-next " aria-label="Next page: Core Concepts">
+                <a href="../notebooks/" class="navigation navigation-next " aria-label="Next page: Notebooks">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -908,7 +984,7 @@ the Tensorflow Java jar to our local maven2 repository.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building from Source","level":"1.1.7","depth":2,"next":{"title":"Core Concepts","level":"1.2","depth":1,"path":"core-concepts/index.md","ref":"core-concepts/index.md","articles":[{"title":"Data Frames","level":"1.2.1","depth":2,"path":"core-concepts/data-frames/index.md","ref":"core-concepts/data-frames/index.md","articles":[{"title":"Data Types","level":"1.2.1.1","depth":3,"path":"core-concepts/data-frames/data-types.md","ref":"core-concepts/data-frames/data-types.md","articles":[]}]},{"title":"Transformers","level":"1.2.2","depth":2,"path":"core-concepts/transformers/index.md","ref":"core-concepts/transformers/index.md","articles":[{"title":"Supported Transformers","level":"1.2.2.1","depth":3,"path":"core-concepts/transformers/support.md","ref":"core-concepts/transformers/support.md","articles":[]}]},{"title":"Pipelines","level":"1.2.3","depth":2,"path":"core-concepts/pipelines.md","ref":"core-concepts/pipelines.md","articles":[]},{"title":"MLeap Bundles","level":"1.2.4","depth":2,"path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md","articles":[{"title":"Structure","level":"1.2.4.1","depth":3,"anchor":"#bundle-structure","path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md#bundle-structure","articles":[]},{"title":"Examples","level":"1.2.4.2","depth":3,"anchor":"#mleap-bundle-examples","path":"core-concepts/mleap-bundles.md","ref":"core-concepts/mleap-bundles.md#mleap-bundle-examples","articles":[]}]},{"title":"MLeap Runtime","level":"1.2.5","depth":2,"path":"core-concepts/mleap-runtime.md","ref":"core-concepts/mleap-runtime.md","articles":[]}]},"previous":{"title":"Getting Started with Tensorflow","level":"1.1.6","depth":2,"path":"getting-started/tensorflow.md","ref":"getting-started/tensorflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"getting-started/building.md","mtime":"2017-01-21T22:18:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:55:38.865Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MNIST","level":"1.8.1","depth":2,"next":{"title":"Notebooks","level":"1.9","depth":1,"path":"notebooks/index.md","ref":"notebooks/index.md","articles":[{"title":"Zeppelin","level":"1.9.1","depth":2,"path":"notebooks/zeppelin.md","ref":"notebooks/zeppelin.md","articles":[]},{"title":"Jupyter","level":"1.9.2","depth":2,"path":"notebooks/jupyter.md","ref":"notebooks/jupyter.md","articles":[]},{"title":"Databricks","level":"1.9.3","depth":2,"path":"notebooks/databricks.md","ref":"notebooks/databricks.md","articles":[]}]},"previous":{"title":"Demos","level":"1.8","depth":1,"path":"demos/index.md","ref":"demos/index.md","articles":[{"title":"MNIST","level":"1.8.1","depth":2,"path":"demos/mnist.md","ref":"demos/mnist.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"demos/mnist.md","mtime":"2017-01-23T01:52:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T01:55:38.865Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
