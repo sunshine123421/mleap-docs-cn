@@ -818,8 +818,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="basic-usage">Basic Usage</h1>
-<p>MLeap aims to be as simple as possible to use, here are some of our core
-principles when we design our APIs.</p>
+<p>MLeap Runtime is a lightweight, yet highly optimized, execution engine for Machine Learning Pipelines. The goal of MLeap Runtime is to provide production-level serving/scoring infrastructure for common machine learning frameworks, without the dependency on their core libraries. Meaning:</p>
+<ul>
+<li>Execute Spark ML Pipelines without the dependency on the spark context, distributed data frames, and costly execution plans</li>
+<li>Execute Scikit-learn pipelines without the dependency on numpy, pandas, scipy or other libraries used in training </li>
+</ul>
+<p>MLeap aims to be as simple as possible to use, and here are our design principles:</p>
 <ol>
 <li>Use monadic programming as much as possible</li>
 <li>Stay clean with automatic resource management</li>
@@ -875,7 +879,7 @@ full-fledged ML pipeline transformations.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MLeap Runtime","level":"1.7","depth":1,"next":{"title":"Creating a Leap Frame","level":"1.7.1","depth":2,"path":"mleap-runtime/create-leap-frame.md","ref":"mleap-runtime/create-leap-frame.md","articles":[]},"previous":{"title":"Bundle Serialization","level":"1.6.2","depth":2,"path":"tensorflow/bundle-serialization.md","ref":"tensorflow/bundle-serialization.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mleap-runtime/index.md","mtime":"2017-01-23T01:55:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-23T07:37:18.778Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MLeap Runtime","level":"1.7","depth":1,"next":{"title":"Creating a Leap Frame","level":"1.7.1","depth":2,"path":"mleap-runtime/create-leap-frame.md","ref":"mleap-runtime/create-leap-frame.md","articles":[]},"previous":{"title":"Bundle Serialization","level":"1.6.2","depth":2,"path":"tensorflow/bundle-serialization.md","ref":"tensorflow/bundle-serialization.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mleap-runtime/index.md","mtime":"2017-01-30T16:36:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-30T16:36:09.684Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
