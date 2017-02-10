@@ -1076,14 +1076,14 @@ know where the bundle is.</p>
 <pre><code class="lang-scala"><span class="hljs-comment">// Deserialize a zip bundle</span>
 <span class="hljs-comment">// Use Scala ARM to make sure resources are managed properly</span>
 <span class="hljs-keyword">val</span> zipBundle = (<span class="hljs-keyword">for</span>(bundle &lt;- managed(<span class="hljs-type">BundleFile</span>(<span class="hljs-string">&quot;jar:file:/tmp/mleap-examples/simple-mixed.zip&quot;</span>))) <span class="hljs-keyword">yield</span> {
-  bundle.loadBundle().get
+  bundle.loadMleapBundle().get
 }).opt.get
 </code></pre>
 <h3 id="directory-bundle">Directory Bundle</h3>
 <pre><code class="lang-scala"><span class="hljs-comment">// Deserialize a directory bundle</span>
 <span class="hljs-comment">// Use Scala ARM to make sure resources are managed properly</span>
 <span class="hljs-keyword">val</span> dirBundle = (<span class="hljs-keyword">for</span>(bundle &lt;- managed(<span class="hljs-type">BundleFile</span>(<span class="hljs-string">&quot;file:/tmp/mleap-examples/simple-mixed-dir&quot;</span>))) <span class="hljs-keyword">yield</span> {
-  bundle.loadBundle().get
+  bundle.loadMleapBundle().get
 }).opt.get
 </code></pre>
 
@@ -1129,7 +1129,7 @@ know where the bundle is.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Serialization","level":"1.8.5","depth":2,"next":{"title":"Boosting Transform Speed","level":"1.8.6","depth":2,"path":"mleap-runtime/row-transformer.md","ref":"mleap-runtime/row-transformer.md","articles":[]},"previous":{"title":"Transforming a Leap Frame","level":"1.8.4","depth":2,"path":"mleap-runtime/transform-leap-frame.md","ref":"mleap-runtime/transform-leap-frame.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mleap-runtime/bundle.md","mtime":"2017-01-23T01:55:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-06T07:30:00.015Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Serialization","level":"1.8.5","depth":2,"next":{"title":"Boosting Transform Speed","level":"1.8.6","depth":2,"path":"mleap-runtime/row-transformer.md","ref":"mleap-runtime/row-transformer.md","articles":[]},"previous":{"title":"Transforming a Leap Frame","level":"1.8.4","depth":2,"path":"mleap-runtime/transform-leap-frame.md","ref":"mleap-runtime/transform-leap-frame.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mleap-runtime/bundle.md","mtime":"2017-02-10T17:10:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-10T17:10:56.529Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
