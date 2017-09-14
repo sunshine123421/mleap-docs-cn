@@ -1,6 +1,7 @@
 # Data Frames
 
-Data Frames用于在执行一个机器学习Pipeline时存储数据。类似于SQL表，Data Frames拥有存储列数据类型的模式和真正存储数据的行。
+Data Frames用于在执行一个机器学习Pipeline时存储数据。类似于SQL表，
+Data Frames拥有存储列数据类型的模式和真正存储数据的行。
 
 Spark, Scikit-learn, and MLeap all have their own version of a data
 frame. Tensorflow uses a graph of inputs and outputs to execute
