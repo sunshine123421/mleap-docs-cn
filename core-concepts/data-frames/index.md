@@ -1,9 +1,6 @@
 # Data Frames
 
-Data Frames are used to store data during execution of an ML pipeline.
-They are similar to a SQL table in that they have a schema for storing
-the data types of every column and they have rows for storing the actual
-values.
+Data Frames用于在执行一个机器学习Pipeline时存储数据。类似于SQL表，Data Frames拥有存储列数据类型的模式和真正存储数据的行。
 
 Spark, Scikit-learn, and MLeap all have their own version of a data
 frame. Tensorflow uses a graph of inputs and outputs to execute
@@ -80,4 +77,3 @@ data for the input nodes, while output nodes can be placed in new
 columns of a data frame. Leap frames are specifically designed to be
 compatible with Tensorflow graphs, Spark data frames, and to a certain
 extent, Scikit-learn data frames.
-
