@@ -1,26 +1,20 @@
-# Data Types
+# 数据类型
 
-There are many data types supported by Spark, MLeap, Scikit-learn and
-Tensorflow. Fortunately, because all of these technologies are based on
-well-known mathematical data structures, they are all cross-compatible
-with each other to a large extent.
+Spark, MLeap, Scikit-learn和Tensorflow支持多种数据类型。幸运的是，所有这些技术都基于通用的数学数据结构，因此它们很大程度上是相互兼容的。
 
-Data frames store the data types of their columns in a schema object.
-This schema can be consulted to determine which operations are available
-for which columns and how transformations should be handled.
+Data Frames把列数据类型存储在一个模式对象中。此模式决定了哪些操作可以在哪些列上执行，以及转换如何处理。
 
-## Supported Data Types
+## 支持数据类型
 
-| Data Type | Notes |
+| 数据类型 | 注释 |
 |---|---|
-| Byte | 8-bit integer values supported by all platforms, MLeap and Spark only support signed versions |
-| Short | 16-bit integer values supported by all platforms, MLeap and Spark only support signed versions |
-| Integer | 32-bit integer values supported by all platforms, MLeap and Spark only support signed versions |
-| Long | 64-bit integer values are supported by all platforms, MLeap and Spark only support signed versions |
-| Float | 32-bit floating point values are supported by all platforms |
-| Double | 64-bit floating point values are supported by all platforms |
-| Boolean | 8-bit value representing true or false, can be packed into 1-bit if needed |
-| String | A series of characters, either null-terminated or length prefixed depending on platform |
-| Array | Sequence of elements of any of the above basic types |
-| Tensor | Supported by MLeap and Tensorflow, provides n-dimensional storage for one of the above basic data types |
-
+| Byte | 8位整数, MLeap和Spark仅支持带符号整数 |
+| Short | 16位整数, MLeap和Spark仅支持带符号整数 |
+| Integer | 32位整数, MLeap和Spark仅支持带符号整数 |
+| Long | 64位整数, MLeap和Spark仅支持带符号整数 |
+| Float | 32位浮点数 |
+| Double | 64位浮点数 |
+| Boolean | 8位布尔值表示真或假，如果需要可以压缩到1个bit |
+| String | 字符串，根据平台不同可以是预先定义长度或者不定长以NULL结尾 |
+| Array | 以上基本类型的数组 |
+| Tensor | MLeap和Tensorflow支持, 以上基本类型之一的n维存储空间 |
