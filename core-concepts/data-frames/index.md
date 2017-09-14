@@ -3,40 +3,31 @@
 Data Frames用于在执行一个机器学习Pipeline时存储数据。类似于SQL表，
 Data Frames拥有存储列数据类型的模式和真正存储数据的行。
 
-Spark, Scikit-learn, and MLeap all have their own version of a data
-frame. Tensorflow uses a graph of inputs and outputs to execute
-transformations, which is very easy to inteface with a data frame
-structure.
+Spark, Scikit-learn和MLeap都有他们自己的Data Frame版本。Tensorflow用
+一张输入输出表执行转换，很容易和Data Frame结构交互。
 
 ## Spark Data Frames
 
-Spark's data frames are optimized for distributed computation, making
-them excellent for processing large datasets. They are very
-heavy-weight, as they need to handle network failure scenarios,
-compilation of execution plans, redundancy, and many other requirements
-in a distributed context. Spark data frames offer a lot of functionality
-outside of ML pipelines, such as joining large datasets, mapping,
-reducing, SQL queries, etc.
+Spark Data Frames针对分布式计算做了优化，在大数据处理方面表现优秀。它非常
+重量级，因为需要处理网络不通的场景，执行计划的编译，冗余，以及其他一些分布式
+上下文中的需求。Spark Data Frames还提供了许多机器学习Pipeline之外的功能，
+比如大数据集的连接，Mapping，Reducing，SQL查询等等。
 
 ## Scikit-learn Data Frames
 
-Scikit-learn data frames are provided by [Pandas](http://pandas.pydata.org/)
-and [NumPy](http://www.numpy.org/). These are lightweight data
-structures, and offer quite a bit of the same functionality as Spark
-data frames, minus the distributed nature of Spark's data frames.
+Scikit-learn Data Frames是由[Pandas](http://pandas.pydata.org/)
+和[NumPy](http://www.numpy.org/)提供的轻量级数据结构，相当多功能和
+Spark Data Frames保持一致，只是没有了分布式特性。
 
 ## MLeap Data Frames: Leap Frames
 
-Leap frames are very lightweight data structures and are meant to
-support very basic operations and ML transformations. Because of their
-simplicity, they are highly-optimized for use as a realtime prediction
-engine or small-batch predictions. Leap frames can be abstracted over
-Spark data frames, and so they do not lose their ability to act as an
-efficient batch-mode data store as well.
+Leap Frames是非常轻量级的数据结构，目的是支持非常基本的操作和机器学习转换。
+因其简单，在实时预测和小规模批量预测方面做了高度优化。Leap Frames是基于
+Spark Data Frames之上的抽象，所以并没有失去作为高效的批量模式数据存储的能力。
 
-### Example Leap Frame
+### Leap Frame例子
 
-Here is an example leap frame in JSON, it comes from our [AirBnB demo](https://github.com/combust/mleap-demo/blob/master/notebooks/airbnb-price-regression.ipynb):
+下面是一个Leap Frame JSON格式的例子，来源于[AirBnb demo](https://github.com/combust/mleap-demo/blob/master/notebooks/airbnb-price-regression.ipynb):
 
 ```json
 {
@@ -70,11 +61,8 @@ Here is an example leap frame in JSON, it comes from our [AirBnB demo](https://g
 
 ## Tensorflow
 
-[Tensorflow](https://www.tensorflow.org/) does not have data frames like Spark, Scikit-learn and MLeap.
-Instead, Tensorflow relies on input nodes and output nodes, connected by
-a graph of transfomation operations. This paradigm is actually neatly
-compatible with data frames, as certain columns can be used to provide
-data for the input nodes, while output nodes can be placed in new
-columns of a data frame. Leap frames are specifically designed to be
-compatible with Tensorflow graphs, Spark data frames, and to a certain
-extent, Scikit-learn data frames.
+[Tensorflow](https://www.tensorflow.org/)不像Spark，Scikit-learn和MLeap
+一样有Data Frames的概念。Tensorflow依赖于用一张转换图连接起来的输入节点和输出节点。
+这个框架恰好和Data Frames是兼容的，因为某些列刚好可以作为输入节点的数据，而输出节点
+的数据可以放在Data Frame的新添加列上。Leap Frames很特别的被设计为兼容Tensorflow
+graphs，Spark Data Frames和Scikit-learn Data Frames。
