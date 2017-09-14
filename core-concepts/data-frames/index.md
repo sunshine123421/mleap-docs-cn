@@ -61,8 +61,7 @@ Spark Data Frames之上的抽象，所以并没有失去作为高效的批量模
 
 ## Tensorflow
 
-[Tensorflow](https://www.tensorflow.org/)不像Spark，Scikit-learn和MLeap
-一样有Data Frames的概念。Tensorflow依赖于用一张转换图连接起来的输入节点和输出节点。
-这个框架恰好和Data Frames是兼容的，因为某些列刚好可以作为输入节点的数据，而输出节点
+[Tensorflow](https://www.tensorflow.org/)不像Spark，Scikit-learn和MLeap一样有Data Frames的概念。
+Tensorflow依赖于用一张转换图连接起来的输入节点和输出节点。这个框架恰好和Data Frames是兼容的，因为某些列刚好可以作为输入节点的数据，而输出节点
 的数据可以放在Data Frame的新添加列上。Leap Frames很特别的被设计为兼容Tensorflow
 graphs，Spark Data Frames和Scikit-learn Data Frames。
