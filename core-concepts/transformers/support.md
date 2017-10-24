@@ -1,11 +1,11 @@
-# Supported Transformers
+# 支持的Transformers
 
-Here is a list of all supported transformers in all of the core platforms that MLeap supports.
+下面是MLeap支持的各种机器学习平台的Transformer
 
-NOTE: Tensorflow has no listed support here, but it is possible to
+注：Tensorflow没有Transformer支持列表，但是可以参考此链接在MLeap中引入Tensorflow graph
 [include Tensorflow graphs in an MLeap transformer pipeline](../../integration/tensorflow/usage.html).
 
-## Features
+## 特征提取
 
 | Transformer| Spark | MLeap | Scikit-Learn | TensorFlow |
 |---|:---:|:---:|:---:|:---:|
@@ -39,7 +39,7 @@ NOTE: Tensorflow has no listed support here, but it is possible to
 | VectorSlicer | x | x | | |
 | WordToVector | x | x | | | |
 
-## Classification
+## 分类
 
 | Transformer | Spark| MLeap | Scikit-Learn  | TensorFlow |
 |---|:---:|:---:|:---:|:---:|
@@ -53,7 +53,7 @@ NOTE: Tensorflow has no listed support here, but it is possible to
 | SupportVectorMachines | x | x | x | |
 | MultiLayerPerceptron | x | x | | | |
 
-## Regression
+## 回归
 
 | Transformer | Spark | MLeap | Scikit-Learn | TensorFlow |
 |---|:---:|:---:|:---:|:---:|
@@ -66,7 +66,7 @@ NOTE: Tensorflow has no listed support here, but it is possible to
 | RandomForestRegression | x | x | x | | |
 
 
-## Clustering
+## 聚类
 
 | Transformer | Spark | MLeap | Scikit-Learn | TensorFlow |
 |---|:---:|:---:|:---:|:---:|
@@ -75,15 +75,14 @@ NOTE: Tensorflow has no listed support here, but it is possible to
 | KMeans | x | x | | |
 | LDA | x | | | | |
 
-## Extensions
+## 扩展
 | Transformer | Spark | MLeap | Scikit-Learn | TensorFlow | Description |
 |---|:---:|:---:|:---:|:---:|:---|
 | MathUnary | x | x | x | | Simple set of unary mathematical operations |
 | MathBinary | x | x | x | | Simple set of binary mathematical operations |
 | StringMap | x | x | x | | Maps a string to a double |
 
-## Recommendation
+## 推荐算法
 | Transformer | Spark | MLeap | Scikit-Learn | TensorFlow |
 |---|:---:|:---:|:---:|:---:|
 | ALS | x | | | | |
-

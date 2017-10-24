@@ -1,19 +1,13 @@
 # MLeap Runtime
 
-The MLeap Runtime is a lightweight execution engine for machine learning
-pipelines. It has the following features:
+MLeap运行环境是一个轻量级的机器学习引擎。它有如下特点：
 
-1. Data frames, called leap frames with support for all common data
-   types and custom data types
-2. Transformers, currently supports all transformers found in Spark as
-   well as multiple extension transformers
-3. Pipelines, easily build pipelines from your transformers
-4. Full integration with MLeap Bundles, the MLeap runtime provides a
-   reference implementation for MLeap Bundles and anyone who wishes to
-implement their own serializers for it
-5. Serialization formats for leap frames to easily send content across
-   the wire
-6. A very fast linear algebra system powred by [BLAS](https://github.com/scalanlp/breeze)
+1. Data Frame, leap frames支持所有通用数据类型和自定义数据类型
+2. Transformers，目前支持所有Spark transformers和许多扩展transformers
+3. Pipelines, 很容易从transformers创建pipelines
+4. 完全集成MLeap Bundle，MLeap运行环境为希望实现自己序列化方案的客户提供了一个参考实现
+5. 序列格式使得很容易发送leap frame的内容
+6. [BLAS](https://github.com/scalanlp/breeze)提供运行非常快的线性代数系统
 
-See our [MLeap Runtime usage section](../mleap-runtime/index.md) for more
-information on how to use the MLeap Runtime in your application.
+[MLeap Runtime usage section](../mleap-runtime/index.md)包含更多怎样在应用中
+使用MLeap Runtime的信息

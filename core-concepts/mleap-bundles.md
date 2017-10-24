@@ -1,43 +1,38 @@
 # MLeap Bundles
 
-MLeap Bundles are a graph-based, portable file format for serializing and
-de-serializing:
+MLeap Bundles是一个基于图，可移植的序列化/反序列化文件格式:
 
-1. Machine learning data pipelines - any transformer-based data pipeline
-2. Algorithms (Regressions, Tree-Based models, Bayesian models, Neural Nets, Clustering)
+1. 机器学习pipelines - 任何基于Transformer的pipeline
+2. 算法（回归，树形模型，贝叶斯模型，神经网络，聚类）
 
-Bundles make it very easy to share the results of your training pipeline, simply generate a bundle file and
-send it through email to a colleague or just view the metadata of your data pipeline and algorithm!
+Bundles使共享机器学习模型训练的pipelines结果变得非常容易，只需要生成一个Bundle文件，通过邮件
+发送给同事或者直接浏览文件里的pipelines和算法元数据。
 
-Bundles also make deployments simple: just export your bundle and load it into your Spark,
-Scikit-learn, or MLeap-based application.
+Bundle也使得部署变得简单：只需要导出bundle然后加载到Spark，Scikit-learn和MLeap-based应用。
 
-## Features of MLeap Bundles
+## MLeap Bundles特点
 
-1. Serialize to a directory or a zip file
-2. Entirely JSON and Protobuf-based format
-3. Serialize as pure JSON, pure Protobuf, or mixed mode
-4. Highly extensible, including easy integration with new transformers
+1. 序列化到一个目录或者zip文件
+2. JSON和Protobuf格式
+3. 可以序列化成纯JSON，纯Protobuf或者混合模式
+4. 高度可扩展化，很容易和新transformer集成
 
-## Common Format For Spark, Scikit-Learn, TensorFlow
+## Spark, Scikit-Learn, TensorFlow通用格式
 
-MLeap provides a serialization format for common transformers that are found in Spark, Scikit and TF. For example, consider the Standard Scaler trasnformer (`tf.random_normal_initializer` in TensorFlow). It performs the same opperation on all three platforms so in theory can be serialized, deserialized and used interchangeably between them.
+MLeap提供了Spark，Scikit和TensorFlow的通用transformer序列化格式。比如，标准向量transformer
+（Tensorflow里是`tf.random_normal_initializer`）。其在三种平台上执行同样的操作，因此理论上
+可以被序列化/反序列化和相互替换。
 
 <img src="../assets/images/common-serialization.jpg" alt="Common Serialization"/>
 
-## Bundle Structure
+## Bundle结构
 
-At its root directory, a bundle has a `bundle.json` file, which provides
-basic meta data about the serialization of the bundle. It also has a
-`root/` directory, which contains the root transformer of the ML
-pipeline. The root transformer can be any type of transformer supported
-by MLeap, but is most commonly going to be a `Pipeline` transformer.
+在根目录，一个bundle有一个`bundle.json`文件，包含bundle序列化的基本元数据。另外还有一个`root/`
+目录，包含机器学习pipelined的根transformer。根transformer可以是MLeap支持的任何transformer，
+但通常情况会是一个`Pipeline` transformer。
 
-Let's take a look at an example MLeap Bundle. The pipeline consists of
-string indexing a set of categorical features, followed by one hot
-encoding them, assembling the results into a feature vector and finally
-executing a linear regression on the features. Here is what the bundle
-looks like:
+下面我们看一个MLeap Bundle的例子。pipeline包含一系列将类别特征转化为整数的string indexing，
+紧跟一个one hot encoding, 然后组装结果到一个特征向量，最后是线性回归算法。bundle结构如下:
 
 ```
 ├── bundle.json
@@ -70,17 +65,15 @@ looks like:
 }
 ```
 
-1. `uid` is a Java UUID that is automatically generated as a unique ID
-   for the bundle
-2. `name` is the `uid` of the root transformer
-3. `format` is the serialization format used to serialize this bundle
-4. `version` is a reference to the version of MLeap used to serialize
-   the bundle
-5. `timestamp` defines when the bundle was serialized
+1. `uid`是一个为bundle自动生成的唯一Java UUID
+2. `name`是根transformer的`uid`
+3. `format`是系列化根式
+4. `version`序列化bundle所用MLeap的版本
+5. `timestamp`定义了序列化bundle的时间
 
 ### model.json
 
-For the pipeline:
+pipeline:
 
 ```
 {
@@ -94,7 +87,7 @@ For the pipeline:
 
 ```
 
-For the linear regression:
+线性回归算法:
 
 ```
 {
@@ -116,14 +109,12 @@ For the linear regression:
 }
 ```
 
-1. `op` specifies the operation to be executed, there is one op name for
-   each transformer supported by MLeap
-2. `attributes` contains the values needed by the operation in order to
-   execute
+1. `op`指定了执行操作名字，MLeap支持的每一个transformer都有对应的名字
+2. `attributes`包含执行操作所需属性值
 
 ### node.json
 
-For the one hot encoder:
+one hot encoder:
 
 ```
 {
@@ -141,22 +132,17 @@ For the one hot encoder:
 }
 ```
 
-1. `name` specifies the name of the node in the execution graph
-2. `shape` specifies the inputs and outputs of the node, and how they
-   are to be used internally by the operation
+1. `name`指定了执行节点的名字
+2. `shape`指定了节点输入输出，以及执行时如何被内部使用
 
-In this case, the `fico_index` column is to be used as the input column
-of the one hot encoder, and `fico` will be the result column.
+在这个例子里，`fico_index`列被用于one hot encoder的输入，而`fico`是输出结果列。
 
-## MLeap Bundle Examples
+## MLeap Bundle例子
 
-Here are some examples of serialized bundle files. They are not meant to
-be useful pipelines, but rather to illustrate what these files actually
-look like. The pipelines were generated when running our Spark parity
-tests, which ensure that MLeap transformers and Spark transformers
-produce exactly the same outputs.
+这里给出一些序列化bundle文件的例子。他们不是真正有意义的pipelines，只是用来展示bundle
+文件是什么样子。这些pipelines是在跑测试用例生成的，目的是验证MLeap transformers和
+Spark transformer得到的结果是一样的。
 
-[MLeap/Spark Parity Bundle Examples](../assets/bundles/spark-parity.zip)
+[MLeap/Spark Parity Bundle例子](../assets/bundles/spark-parity.zip)
 
-NOTE: right click and "Save As...", Gitbook prevents directly clicking
-on the link.
+注：点击右键选择"Save As...", Gitbook会阻止直接点击链接

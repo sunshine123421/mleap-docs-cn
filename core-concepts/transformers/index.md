@@ -1,73 +1,48 @@
 # Transformers
 
-Transformers offer a basic building block to executing machine learning
-pipelines. A transformer takes data from a data frame, transforms it
-using some operation and outputs one or more new fields back to the
-data frame. This is a very simple task, but is at the core of the Spark,
-Scikit-learn, MLeap and Tensorflow execution engines.
+Transformers提供了基本的构件块执行机器学习pipelines。一个Transformer从Data Frame里取出数据，通过一些操作进行转换，然后将输出的一个或多个字段写回Data Frame。这是非常简单的任务，但却是Spark，Scikit-learn，MLeap和Tensorflow引擎的核心。
 
-Transformers are used for many different tasks, but the most common in
-machine learning are:
+Transformers用于许多不同的任务，但机器学习中最常见的包括：
 
-1. Feature extraction
-2. Model scoring
+1. 特征提取
+2. 模型评分
 
-## Feature Extraction
+## 特征提取
 
-Feature extraction is the process of taking one of more features from
-and input dataset and deriving new features from them. In the case of
-data frames, the features come from the input data frame and are written
-to the output data frame.
+特征提取是一个从输入数据集中的一个或者多个特征派生出新特征的过程。对于Data Frame而言，特征从输入Data Frame获取，然后写入输出Data Frame。
 
-Some examples of feature extraction are:
+一些特征提取的例子有：
 
-1. String indexing (label encoding) - Taking a string and converting it
-   to an integer value
-2. One hot encoding - Converting an integer value to a vector of 1s and
-   0s
-3. Feature selection - Running analysis to determine which features are
-   most effective for training a predictive ML algorithm (i.e. CHI2)
-4. Math - Basic mathematical functions, such as dividing two features by
-   each other or taking the log of a feature
+1. String indexing（label encoding) - 将字符串转换为整数值
+2. One hot encoding - 将整数值转换为0和1组成的数组(vector)
+3. Feature selection - 分析确定哪些特征用于机器学习模型训练最有效（比如CHI2）
+4. Math - 基本的数学函数，比如划分两种特征，获取特征日志
 
-There are too many examples of feature extraction to enumerate here, but
-take a look at our complete list of [supported feature transformers](support.html#features) to
-get an idea of what is possible.
+有太多特征提取的例子可以列举，但最好是浏览一下[supported feature transformers](support.html#features)完整列表，
+知道哪些转换是可行的。
 
-## Regression
+## 回归
 
-Regression is used to predict a continuous
-numeric value, such as the price of a car or a home. Regression models,
-for the most part, operate on vectors of doubles called a "feature
-vector". The feature vector contains all of the known information about
-what is being predicted. In the case of predicting a price of a house,
-the feature vector will have things like the encoded region where the
-house is, the square footage, how many bathrooms there are, how old it
-is, etc.
+回归用于预测连续型数值，比如汽车或者房屋的售价。回归模型，在大多数情况下，作用于名为“特征向量”（feature vector）的双精度浮点数向量。
+特征向量包含所有用于预测的已知信息。在预测房屋价格的例子里，特征向量包括房屋所处地区，房屋面积大小，有多少间卧室，房屋修建年代，诸如此类。
 
-See a list of [supported regression models](support.html#regression).
+[supported regression models](support.html#regression)
 
-## Classification
+## 分类
 
-Classification is used to predict categorical information. An example is
-making a binary prediction of whether or not to give a consumer a loan. Another example is predicting what type of sound is contained in
-a .wav file, or whether or not there is a person in and image.
+分类用于预测类别信息。一个例子是二分类预测是否贷款给某个客户；另外一个例子是预测在.wav文件里包含哪种类型的声音，或者在一幅图片里是否存在一个人像。
 
 [Supported classification models](support.html#classification).
 
-## Clustering
+## 聚类
 
-Clustering is used to assign a label to similar data (thus categorizing/clustering it). It is similar to
-classification in that the predictions are discrete values from a set.
-Unlike classification models though, clustering models are part of the unsupervised family of models and do not operate on labeled data.
-This is useful for feature engineering, anomaly detection, as well as many other tasks.
+聚类用于给相似的数据打上标签。和分类相似之处是预测同样是集合中的离散值；但是不同于分类模型，聚类模型是非监督学习，不需要有标签数据。聚类算法在
+特征工程，异常检测以及其他一些任务上非常有用。
 
 
 [Supported clustering models](support.html#clustering).
 
-## Other Types of Transformers
+## 其他类型的Transformers
 
-Transformers can do ANYTHING! This is just a sample of the most common
-uses of them. However, you can build transformers to resize images,
-resample sound data, import data from different data sources or anything
-else you can think of. The sky is the limit.
+Transformers可以做任何事！以上只是最常用的样例。你可以用Transformer调整图片大小，重新采集声音数据，从不同的数据源导入数据，或者其他任何你
+能想到的事情。没有做不到，只有想不到！
