@@ -1,46 +1,40 @@
-# Getting Started
+# 开始之旅
 
-Whether using MLeap with PySpark, Scikit-learn, Spark, Tensorflow, or
-MLeap Runtime, getting started is easy. For the most part, everything you will
-need is already in [Maven Central](https://search.maven.org/) or
-[PyPi](https://pypi.python.org/pypi). If you are trying to get up and
-running with Tensorflow transformers, you will have to build some of
-your own jars.
+无论是结合PySpark，Scikit-learn，Spark，Tensorflow或是MLeap运行时（MLeap Runtime)使用MLeap，
+入门都非常容易。大多数你所需要的都可以在[Maven Central](https://search.maven.org/)或者[PyPi](https://pypi.python.org/pypi)
+下载安装。但是如果你尝试通过MLeap执行Tensorflow转换器（Transformer），你需要构建自己的jar包。
 
-Experimenting with MLeap is easy to do either through an interactive
-Scala console, Python console or a notebook.
+可以很容易的通过交互式Scala命令行，Python命令行或者notebook体验MLeap。
 
+## 典型MLeap流程
 
-## Typical MLeap Workflow
+一个典型的MLeap流程包含3部分：
+1. 训练（Training）：用当前传统方式编写机器学习工作流（ML Pipeline）代码
+2. 序列化（Serialization）：序列化所有的数据处理工作流和算法到Bundle.ML文件
+3. 执行（Execution）：用MLeap运行时执行序列化的工作流，而不依赖于Spark或者Scikit(但你仍需要TensorFlow库)
 
-A typical MLeap workflow consists of 3 parts:
-1. Training: Write your ML Pipelines the same way you do today
-2. Serialization: Serialize all of the data processing (ml pipeline) and the algorithms to Bundle.ML
-3. Execution: Use MLeap runtime to execute your serialized pipeline without dependencies on Spark or Scikit (you'll still need TensorFlow binaries)
+### 训练
 
-### Training
+MLeap的设计目标是对当前构建机器学习工作流的方式影响最小。我们希望你在原有的Scala或者Python代码上，
+加上尽量少的附加代码就可以支持MLeap功能。
 
-MLeap is designed to have minimal impact on how you build your ML pipelines today.
-We want you to write your scala or python code in the same way you do today, with minimial additional needed to support MLeap functionality.
+你将在后面的‘基本用法’章节看到，大多数情况下你只需要引入一些MLeap库就可以了（scikit-learn除外）。
 
-As you will see from the basic usage section, most often all you have to do is import some MLeap libraries and that is it (except for scikit-learn).
+### 序列化
 
+一旦你的机器学习工作流训练完毕，MLeap可以将整个机器学习/数据工作流和训练算法（线性模型，树模型，神经网络）序列化到Bundle.ML。
+序列化生成一个`bundle`，物理上代表了一个可以部署，共享，浏览的机器学习工作流和算法。
 
-### Serialization
+### 执行
 
-Once you have your pipeline trained, MLeap provides functionality to serialize the entire ML/Data Pipeline and your trained algorithm (linear models, tree-based models, neural networks) to Bundle.ML.
-Serialization generates something called a `bundle` which is a physical representation of your pipeline and algorithm that you can deploy, share, view all of the pieces of the pipeline.
+MLeap最初的目标是使得Spark机器学习工作流的预测打分（scoring)不依赖于Spark。这个功能是由MLeap运行时提供支持，
+它加载序列化`bundel`，然后基于后面章节介绍的LeapFrames执行。
 
+我们有提过MLeap运行时执行速度惊人吗？基准测试记录显示在LeapFrames上执行时间都在毫秒级别，RESTful API服务响应时间在5毫秒以内。
 
-### Execution
+提示：目前MLeap运行时仅仅支持Java/Scala库，我们计划未来会添加python绑定。
 
-The goal of MLeap was initially to enable scoring of Spark's ML pipelines without the dependency on Spark. That functionality is powered by MLeap Runtime, which loads your serialized bundle and executes it on incoming dataframes (LeapFrames).
-
-Did we mention that MLeap Runtime is extremely fast? We have recorded benchmarks of micro-second execution on LeapFrames and sub-5ms response times when part of a RESTful API service.
-
-Note: As of right now, MLeap runtime is only provided as a Java/Scala library, but we do plan to add python bindings in the future.
-
-## Components
+## 组件（Components）
 
 ### MLeap Spark
 
@@ -51,4 +45,4 @@ Note: As of right now, MLeap runtime is only provided as a Java/Scala library, b
 ### MLeap Bundle
 
 
-### MLeap Runtime
+### MLeap运行时

@@ -1,24 +1,21 @@
-# Getting Started with MLeap
+# 开始MLeap
 
-The MLeap runtime itself provides everything needed to execute and
-serialize entire ML pipelines. It does not include anything required for
-training ML pipelines. In order to start with MLeap, you will need to
-add it to your project.
+MLeap运行时本身提供了执行序列化的机器学习工作流所需的一切。但是它不包含任何训练机器学习工作流所需的部分。所以要开始
+使用MLeap，你必须将MLeap加入到你的项目中。
 
-## Adding MLeap to Your Project
+## 将MLeap加入到你的项目
 
-MLeap and its snapshots are hosted on Maven Central and so should be
-easily accessible via a maven build file or SBT. MLeap is currently
-cross-compiled for Scala versions 2.10 and 2.11. We try to maintain
-Scala compatibility with Spark.
+MLeap和其snapshots版本都放在了Maven中心，所以可以非常方便的通过Maven构建文件
+或者SBT获取。MLeap目前分别用Scala 2.10和2.11做了编译，因为我们希望保持和Spark
+使用Scala版本的兼容性。
 
-### Using SBT
+### 使用SBT
 
 ```sbt
 libraryDependencies += "ml.combust.mleap" %% "mleap-runtime" % "0.8.0"
 ```
 
-### Using Maven
+### 使用Maven
 
 ```pom
 <dependency>
@@ -28,7 +25,6 @@ libraryDependencies += "ml.combust.mleap" %% "mleap-runtime" % "0.8.0"
 </dependency>
 ```
 
-1. See [build instructions](./building.html) to build MLeap from source.
-2. See [core concepts](../core-concepts/) for an overview of ML pipelines.
-3. See [basic usage](../basic/) of MLeap to start transforming leap frames.
-
+1. 参考[build instructions](./building.html)从源码构建MLeap
+2. 参考[core concepts](../core-concepts/)机器学习工作流综述
+3. 参考[basic usage](../basic/)在MLeap中转换LeapFrames。

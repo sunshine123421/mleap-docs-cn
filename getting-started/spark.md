@@ -1,30 +1,33 @@
-# Getting Started with Spark
+# 开始Spark
 
 MLeap Spark integration provides serialization of Spark-trained ML
 pipelines to [MLeap Bundles](../mleap-bundle/). MLeap also provides
 several extensions to Spark, including enhanced one hot encoding, one vs
 rest models and unary/binary math transformations.
 
-## Adding MLeap Spark to Your Project
+MLeap Spark集成能够将Spark训练的机器学习工作流序列化到[MLeap Bundles](../mleap-bundle/)。
+MLeap还提供了对Spark的几种扩展，包括加强的独热编码（one hot encoding），one-vs-rest模型算法
+和一元/二元数学转换器。
 
-MLeap Spark and its snapshots are hosted on Maven Central and so should be
-easily accessible via a maven build file or SBT. MLeap is currently
-cross-compiled for Scala versions 2.10 and 2.11. We try to maintain
-Scala compatibility with Spark.
+## 将MLeap Spark加入到你的项目
 
-### Using SBT
+MLeap Spark和其snapshots版本都放在了Maven中心，所以可以非常方便的通过Maven构建文件
+或者SBT获取。MLeap目前分别用Scala 2.10和2.11做了编译，因为我们希望保持和Spark
+使用Scala版本的兼容性。
+
+### 使用SBT
 
 ```sbt
 libraryDependencies += "ml.combust.mleap" %% "mleap-spark" % "0.8.0"
 ```
 
-To use MLeap extensions to Spark:
+在Spark中使用MLeap扩展：
 
 ```sbt
 libraryDependencies += "ml.combust.mleap" %% "mleap-spark-extension" % "0.8.0"
 ```
 
-### Using Maven
+### 使用Maven
 
 ```pom
 <dependency>
@@ -34,7 +37,7 @@ libraryDependencies += "ml.combust.mleap" %% "mleap-spark-extension" % "0.8.0"
 </dependency>
 ```
 
-To use MLeap extensions to Spark:
+在Spark中使用MLeap扩展：
 
 ```pom
 <dependency>
@@ -44,7 +47,7 @@ To use MLeap extensions to Spark:
 </dependency>
 ```
 
-1. See [build instructions](./building.html) to build MLeap from source.
-2. See [core concepts](../core-concepts/) for an overview of ML pipelines.
-3. See [Spark documentation](http://spark.apache.org/docs/latest/ml-guide.html) to learn how to train ML pipelines in Spark.
-4. See [Demo notebooks](https://github.com/combust/mleap-demo/tree/master/notebooks) on how to use MLeap with PySpark to serialize your pipelines to Bundle.ML and score with MLeap.
+1. 参考[build instructions](./building.html)从源码构建MLeap
+2. 参考[core concepts](../core-concepts/)机器学习工作流综述
+3. 参考[Spark documentation](http://spark.apache.org/docs/latest/ml-guide.html)学习如何在Spark中训练机器学习工作流
+4. 参考[Demo notebooks](https://github.com/combust/mleap-demo/tree/master/notebooks)如何用PySpark和MLeap序列化你的工作流到Bundle.ML

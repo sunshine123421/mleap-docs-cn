@@ -1,31 +1,26 @@
-# Getting Started with Tensrflow
+# 开始Tensrflow
 
-MLeap Tensorflow integration provides support for including Tensorflow
-graphs as a transform step in your ML pipelines. In the future we may
-provide more compatibility. For right now, Tensorflow integration should
-be considered experimental as both Tensrflow and MLeap integration with
-Tensorflow are still stabilizing.
+MLeap Tensorflow集成支持将Tensorflow图用作机器学习工作流中的转换器步骤。将来我们会
+提供更多兼容。Tensorflow集成目前还处于实验阶段，因为Tensorflow和MLeap集成都还在
+逐渐稳定的路上。
 
-## Building MLeap-Tensorflow
+## 构建 MLeap-Tensorflow
 
-MLeap Tensorflow modules are not included in maven central, and must
-instead be built from source along with the Tensorflow JNI support. See
-[instructions](building.md#build-tensorflow-mleap-module) for building
-the Tensorflow module.
+MLeap Tensorflow模块还不在Maven中心，而必须在Tensorflow JNI的支持下通过源码
+编译构建。参考[instructions](building.md#build-tensorflow-mleap-module)如何
+构建Tensorflow模块
 
-## Using MLeap-Tensorflow
+## 使用 MLeap-Tensorflow
 
-Once you have everything built, it's easy to incorporate Tensorflow into
-your MLeap pipelines.
+编译构建成功后，将Tensorflow嵌入MLeap工作流就很容易了。
 
-First, include the module as a project dependency:
+首先，在项目依赖中添加：
 
 ```sbt
 libraryDependencies += "ml.combust.mleap" %% "mleap-tensorflow" % "0.8.0"
 ```
 
-Then we can start using Tensorflow graphs, let's build a simple one that
-multiplies two tensors:
+然后我们就可以使用Tensorflow图了，让我们建一个简单的图做两个张量相乘：
 
 ```scala
 import ml.combust.bundle.dsl.Shape
@@ -96,8 +91,7 @@ assert(data(2)(3) == 1.2f * 9.7f)
 transformer.close()
 ```
 
-For more information on how Tensorflow integration works:
+更多Tensorflow集成如何工作的资料：
 
-1. Details on data conversion and integration [here](../tensorflow/mleap-integration.md).
-2. How we serialize MLeap bundles with Tensorflow graphs [here](../tensorflow/bundle-serialization.md)
-
+1. 数据转换和集成细节[这里](../tensorflow/mleap-integration.md)
+2. 如何将Tensorflow图序列化为MLeap Bundles[这里](../tensorflow/bundle-serialization.md)
