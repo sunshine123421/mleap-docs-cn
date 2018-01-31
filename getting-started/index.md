@@ -27,7 +27,7 @@ MLeap的设计目标是对当前构建机器学习工作流的方式影响最小
 
 ### 执行
 
-MLeap最初的目标是使得Spark机器学习工作流的预测打分（scoring)不依赖于Spark。这个功能是由MLeap运行时提供支持，
+MLeap最初的目标是使得Spark机器学习工作流的预测评分（scoring)不依赖于Spark。这个功能是由MLeap运行时提供支持，
 它加载序列化`bundel`，然后基于后面章节介绍的LeapFrames执行。
 
 我们有提过MLeap运行时执行速度惊人吗？基准测试记录显示在LeapFrames上执行时间都在毫秒级别，RESTful API服务响应时间在5毫秒以内。

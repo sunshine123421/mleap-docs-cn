@@ -1,14 +1,14 @@
-# Core Concepts
+# 核心概念
 
-MLeap以简单易行的方式使用几个核心构件(Building Block)部署管道。
+MLeap以简单易行的方式使用几个核心构件(Building Block)部署你的工作流(Pipeline)。
 
 | 概念                 | 描述                         |
 | ------------------- | -----------------------------|
-| Data Frames  | 用于存储待转换的数据，类似于SQL表 |
-| Transformers | 从DataFrame中提取数据进行计算，然后将结果放入新的DataFrame |
-| Pipelines     |  用于对DataFrame执行一系列的转换操作 |
-| Feature Unions - 仅限Scikit | 用于并行执行Pipeline操作，最后将结果合并 |
-| MLeap Bundles | 以通用的JSON/Protobuf格式序列化存储机器学习Pipeline |
-| MLeap Runtime | 在Java虚拟机中以轻量级的数据结构执行机器学习Pipeline |
+| 数据帧（Data Frames）  | 用于存储待转换的数据，类似于SQL表 |
+| 转换器（Transformers） | 从数据帧中提取数据进行计算，然后将结果加入到数据帧 |
+| 工作流（Pipelines）    |  用于对数据帧执行一系列的转换操作 |
+| 复合特征空间（Feature Unions） - 仅限Scikit | 用于并行执行工作流操作，最后将结果合并 |
+| MLeap Bundles | 以通用的JSON/Protobuf格式序列化存储机器学习工作流 |
+| MLeap运行时（Runtime） | 在Java虚拟机中以轻量级的数据结构执行机器学习工作流 |
 
-这一章节的目的是向不太熟悉机器学习的人介绍管道的概念以及如何使用数据帧。即便如此，MLeap Bundle和Mleap Runtime的部分也应该对所有人都有所帮助。
+这一章节的目的是向不太熟悉机器学习的人介绍工作流的概念以及如何使用数据帧。即便如此，MLeap Bundle和Mleap运行时的部分也应该对所有人都有所帮助。

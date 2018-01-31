@@ -1,8 +1,8 @@
-# 支持的Transformers
+# 支持的转换器
 
-下面是MLeap支持的各种机器学习平台的Transformer
+下面是MLeap支持的各种机器学习平台的转换器
 
-注：Tensorflow没有Transformer支持列表，但是可以参考此链接在MLeap中引入Tensorflow graph
+注：Tensorflow没有转换器支持列表，但是可以在MLeap转换器工作流中包含Tensorflow图
 [include Tensorflow graphs in an MLeap transformer pipeline](../../integration/tensorflow/usage.html).
 
 ## 特征提取

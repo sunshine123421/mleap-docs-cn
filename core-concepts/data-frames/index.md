@@ -1,20 +1,27 @@
-# Data Frames
+# 数据帧
 
-Data Frames用于在执行一个机器学习Pipeline时存储数据。类似于SQL表，Data Frames用模式存储列数据类型和数据行存储真正数据。
+数据帧用于在执行一个机器学习工作流时存储数据。类似于SQL表，数据帧用模式存储数据类型，用数据行存储
+真正的数据。
 
-Spark, Scikit-learn和MLeap都有他们自己的Data Frame版本。Tensorflow用一张输入输出表执行转换，很容易和Data Frame结构交互。
+Spark, Scikit-learn和MLeap都有他们自己的数据帧版本。Tensorflow用输入输出图进行转换，从而很
+容易地和数据帧结构连接。
 
-## Spark Data Frames
+## Spark数据帧
 
-Spark Data Frames针对分布式计算做了优化，在大数据处理方面表现优秀。它非常重量级，因为需要处理网络不通的场景，执行计划编译，处理冗余，以及其他一些分布式上下文中的需求。Spark Data Frames还提供了许多机器学习Pipeline之外的功能，比如大数据集的连接，Mapping，Reducing，SQL查询等等。
+Spark数据帧针对分布式计算做了优化，在大数据处理方面表现优秀。但是它很重量级，因为需要处理网络不通
+场景，执行计划编译，处理冗余，以及其他一些分布式上下文中的需求。Spark数据帧还提供了许多机器学习
+工作流之外的功能，比如大数据集的连接，Mapping & Reducing，SQL查询等等。
 
-## Scikit-learn Data Frames
+## Scikit-learn数据帧
 
-Scikit-learn Data Frames是由[Pandas](http://pandas.pydata.org/)和[NumPy](http://www.numpy.org/)提供的轻量级数据结构，相当多功能和Spark Data Frames保持一致，只是去掉了分布式特性。
+Scikit-learn数据帧是由[Pandas](http://pandas.pydata.org/)和[NumPy](http://www.numpy.org/)
+提供的轻量级数据结构，相当多功能和Spark数据帧保持一致，只是去掉了分布式特性。
 
-## MLeap Data Frames: Leap Frames
+## MLeap数据帧: Leap Frames
 
-Leap Frames是非常轻量级的数据结构，目的是支持非常基本的操作和机器学习转换。因其简单，在实时预测和小规模批量预测方面做了高度优化。Leap Frames是基于Spark Data Frames之上的抽象，仍然保留了高效的批量模式数据存储的能力。
+Leap Frames是非常轻量级的数据结构，目的是支持非常基本的操作和机器学习转换。因其简单，在实时预测
+和小规模批量预测方面做了高度优化。Leap Frames是基于Spark数据帧之上的抽象，仍然保留了高效的批量
+模式数据存储的能力。
 
 ### Leap Frame例子
 
@@ -52,4 +59,7 @@ Leap Frames是非常轻量级的数据结构，目的是支持非常基本的操
 
 ## Tensorflow
 
-[Tensorflow](https://www.tensorflow.org/)不像Spark，Scikit-learn和MLeap一样有Data Frames的概念。Tensorflow依赖于通过转换操作连接的输入节点和输出节点。这个框架恰好和Data Frames是兼容的，因为某些列刚好可以作为输入节点的数据，而输出节点的数据可以放在Data Frame的新添加列上。Leap Frames很特别的被设计为兼容Tensorflow graphs，Spark Data Frames和Scikit-learn Data Frames。
+[Tensorflow](https://www.tensorflow.org/)不像Spark，Scikit-learn，MLeap一样有数据帧的概念。
+Tensorflow依赖于通过转换图连接的输入节点和输出节点。这个框架和数据帧是完美兼容的，因为某些列刚好可以
+作为输入节点的数据，而输出节点的数据可以放在数据帧的新增列上。Leap Frames很特别的被设计为兼容
+Tensorflow图，Spark数据帧和Scikit-learn数据帧。

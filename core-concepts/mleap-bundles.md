@@ -2,25 +2,25 @@
 
 MLeap Bundles是一个基于图，可移植的序列化/反序列化文件格式:
 
-1. 机器学习pipelines - 任何基于Transformer的pipeline
+1. 机器学习工作流 - 任何基于转换器的工作流
 2. 算法（回归，树形模型，贝叶斯模型，神经网络，聚类）
 
-Bundles使共享机器学习模型训练的pipelines结果变得非常容易，只需要生成一个Bundle文件，通过邮件
-发送给同事或者直接浏览文件里的pipelines和算法元数据。
+Bundles使得共享训练工作流的结果变得非常容易，只需要生成一个Bundle文件，通过邮件发送给同事或者
+直接浏览工作流和算法元数据。
 
-Bundle也使得部署变得简单：只需要导出bundle然后加载到Spark，Scikit-learn和MLeap-based应用。
+Bundles也使部署变得简单：只需要导出bundle然后加载到Spark，Scikit-learn和MLeap应用里。
 
 ## MLeap Bundles特点
 
 1. 序列化到一个目录或者zip文件
 2. JSON和Protobuf格式
 3. 可以序列化成纯JSON，纯Protobuf或者混合模式
-4. 高度可扩展化，很容易和新transformer集成
+4. 高度可扩展化，很容易和新转换器集成
 
 ## Spark, Scikit-Learn, TensorFlow通用格式
 
-MLeap提供了Spark，Scikit和TensorFlow的通用transformer序列化格式。比如，标准向量transformer
-（Tensorflow里是`tf.random_normal_initializer`）。其在三种平台上执行同样的操作，因此理论上
+MLeap提供了Spark，Scikit和TensorFlow通用的转换器序列化格式。比如，标准向量转换器
+（Tensorflow里是`tf.random_normal_initializer`）。它在三种平台上执行同样的操作，因此理论上
 可以被序列化/反序列化和相互替换。
 
 <img src="../assets/images/common-serialization.jpg" alt="Common Serialization"/>
@@ -28,11 +28,11 @@ MLeap提供了Spark，Scikit和TensorFlow的通用transformer序列化格式。�
 ## Bundle结构
 
 在根目录，一个bundle有一个`bundle.json`文件，包含bundle序列化的基本元数据。另外还有一个`root/`
-目录，包含机器学习pipelined的根transformer。根transformer可以是MLeap支持的任何transformer，
-但通常情况会是一个`Pipeline` transformer。
+目录，包含机器学习工作流的根转换器。根转换器可以是MLeap支持的任何转换器，但通常情况会是一个
+`Pipeline` 转换器。
 
-下面我们看一个MLeap Bundle的例子。pipeline包含一系列将类别特征转化为整数的string indexing，
-紧跟一个one hot encoding, 然后组装结果到一个特征向量，最后是线性回归算法。bundle结构如下:
+下面我们看一个MLeap Bundle的例子。工作流首先是一个将类别特征转化为整数的string indexing，
+紧跟着one hot encoding转换器, 然后组装结果到一个特征向量，最后是线性回归算法。bundle结构如下:
 
 ```
 ├── bundle.json
@@ -65,15 +65,15 @@ MLeap提供了Spark，Scikit和TensorFlow的通用transformer序列化格式。�
 }
 ```
 
-1. `uid`是一个为bundle自动生成的唯一Java UUID
-2. `name`是根transformer的`uid`
-3. `format`是系列化根式
+1. `uid`是一个为bundle自动生成的唯一ID（Java UUID）
+2. `name`是根转换器的`uid`
+3. `format`是序列化格式
 4. `version`序列化bundle所用MLeap的版本
-5. `timestamp`定义了序列化bundle的时间
+5. `timestamp`定义了bundle的生成时间
 
 ### model.json
 
-pipeline:
+工作流:
 
 ```
 {
@@ -109,7 +109,7 @@ pipeline:
 }
 ```
 
-1. `op`指定了执行操作名字，MLeap支持的每一个transformer都有对应的名字
+1. `op`指定了执行操作名字，MLeap支持的每一个转换器都有对应的名字
 2. `attributes`包含执行操作所需属性值
 
 ### node.json
@@ -139,9 +139,9 @@ one hot encoder:
 
 ## MLeap Bundle例子
 
-这里给出一些序列化bundle文件的例子。他们不是真正有意义的pipelines，只是用来展示bundle
-文件是什么样子。这些pipelines是在跑测试用例生成的，目的是验证MLeap transformers和
-Spark transformer得到的结果是一样的。
+这里给出一些序列化bundle文件的例子。他们不是真正有意义的工作流，只是用来展示bundle
+文件是什么样子。这些工作流是在跑测试用例生成的，目的是验证MLeap转换器和
+Spark转换器得到的结果是一样的。
 
 [MLeap/Spark Parity Bundle例子](../assets/bundles/spark-parity.zip)
 
