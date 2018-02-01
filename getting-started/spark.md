@@ -1,10 +1,5 @@
 # 开始Spark
 
-MLeap Spark integration provides serialization of Spark-trained ML
-pipelines to [MLeap Bundles](../mleap-bundle/). MLeap also provides
-several extensions to Spark, including enhanced one hot encoding, one vs
-rest models and unary/binary math transformations.
-
 MLeap Spark集成能够将Spark训练的机器学习工作流序列化到[MLeap Bundles](../mleap-bundle/)。
 MLeap还提供了对Spark的几种扩展，包括加强的独热编码（one hot encoding），one-vs-rest模型算法
 和一元/二元数学转换器。

@@ -1,9 +1,5 @@
 # 从源码构建MLeap
 
-MLeap is hosted on [Github](https://github.com/combust/mleap) as a
-public project. Building MLeap is very straightforward and has very few
-dependencies. Here are instructions for building from source.
-
 MLeap作为一个公共项目放在[Github](https://github.com/combust/mleap)。构建
 MLeap非常简单而没有过多的依赖。下面是从源码构建的指南。
 
