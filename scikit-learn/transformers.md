@@ -1,14 +1,13 @@
-# Scikit Transformers Examples
+# Scikit转换器示例
 
-Here we outline some more complicated transformers and transformers that require additional processing to work nicely with Pipelines and Feature Unions.
+这里我们概述一些更复杂的转换器和一些需要额外的处理才能与工作流和特征空间更好配合的转换器。
 
-### Label Encoder
+### 标签编码
+`标签编码`与Spark中的`StringIndexer`是同义词，然而在使用中我们需要考虑scikit转换器的一些独特功的特征：
+1. `标签编码`一次只能在一个特征上运行
+2. `标签编码`的输出是一个(1,n)而不是(n,1)的numpy数组，因此需要进一步处理，像独热编码处理。
 
-The `LabelEncoder` is synonymous with `StringIndexer` in Spark, however there are a couple of unique features of the scikit transformer that we need to account for:
-1. `LabelEncoder` only opperates on a single feature at a time
-2. The output of the `LabelEncoder` is a numpy array of shape (1,n) instead of (n,1), which is required for further processing like One-Hot-Encoding
-
-Here is what an example Pipeline looks like for a `LabelEncoder`
+下面是一个`标签编码`的工作流示例
 
 ```python
 # Create a dataframe with some a categorical and a continuous feature
@@ -42,11 +41,11 @@ array([[0],
        [1]])
 ```
 
-Next step is to combine the label indexer with a `OneHotEncoder`
+下一步是将标签索引与一个`独热编码`结合在一起
 
-### Scikit OneHotEncoder
+### Scikit独热编码
 
-We'll continue the example above to demonstrate how the out-of-the-box Scikit OneHotEncoder works.
+我们会继续上面的示例来演示开箱即用的Scikit独热编码是如何工作的。
 
 ```python
 ## Vector Assembler for x1 One Hot Encoder
@@ -71,12 +70,11 @@ matrix([[ 1.,  0.,  0.],
         [ 0.,  1.,  0.]])
 ```
 
-One of the short-comings of Scikit's OneHotEncoder is that it's missing a `drop_last` functionality that's required in ML pipelines. 
-MLeap comes with it's own OneHotEncoder that enables that function
+Scikit独热编码的缺点之一是它缺少ML工作流所需的`drop_last`功能。MLeap具有它自己的独热编码来启用该功能。
 
-### MLeap OneHotEncoder
+### MLeap独热编码
 
-Very similar to the Scikit OneHotEncoder, except we set an additional `drop_last` attribute.
+和Scikit独热编码非常类似，除了需要设置一个额外的`drop_last`属性。
 
 ```python
 from mleap.sklearn.extensions.data import OneHotEncoder
