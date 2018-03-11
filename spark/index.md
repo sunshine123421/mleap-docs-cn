@@ -1,14 +1,14 @@
 # MLeap Spark集成
 
 MLeap的Spark集成附带以下功能集:
-* 将Bundle.ML中的转换和工作流序列化/反序列化
-* 支持额外的特征转换和模型（例如：SVM, OneVsRest, MapTransform）
-* 支持自定义的转换
+* 将Bundle.ML中的转换器和工作流序列化/反序列化
+* 支持额外的特征转换器和模型（例如：SVM, OneVsRest, MapTransform）
+* 支持自定义转换器
 
 要使用MLeap，您不必更改现有工作流的构建方式，因此接下来的文章更集中于如何从bundle.ml序列化和反序列化你的工作流。
 如何在Spark外执行工作流，参考[MLeap Runtime](../mleap-runtime/index.md)章节。
 
-# 用Spark序列化
+# Spark序列化
 
 使用Spark进行序列化和反序列化几乎与MLeap完全相同。唯一的不同点是序列化和反序列化Spark工作流我们需要引入不同的隐式支持类。
 
@@ -37,10 +37,9 @@ val pipeline = SparkUtil.createPipelineModel(Array(stringIndexer, featureAssembl
 
 ## 序列化到压缩文件
 
-为了序列化成压缩文件，确认URI以`jar:file`作为前缀，以`.zip`作为后缀。
+为了序列化到压缩文件，确保URI以`jar:file`作为前缀，以`.zip`作为后缀。
 
-例如
-`jar:file:/tmp/mleap-bundle.zip`.
+例如`jar:file:/tmp/mleap-bundle.zip`
 
 ### JSON格式
 
@@ -60,9 +59,9 @@ for(bundle <- managed(BundleFile("jar:file:/tmp/mleap-examples/simple-protobuf.z
 
 ## 序列化到目录
 
-为了序列化到目录，确认URI以`file`作为前缀。
+为了序列化到目录，确保URI以`file`作为前缀。
 
-For example `file:/tmp/mleap-bundle-dir`
+例如 `file:/tmp/mleap-bundle-dir`
 
 ### JSON格式
 
@@ -82,9 +81,9 @@ for(bundle <- managed(BundleFile("file:/tmp/mleap-examples/simple-protobuf-dir")
 
 ## 反序列化
 
-反序列化像序列化一样容易。您不需要知道MLeap包的序列化格式，您只需知道包的位置。
+反序列化像序列化一样容易。您不需要知道MLeap Bundle先前序列化的格式，您只需知道Bundle在哪里。
 
-### Zip包
+### 压缩Bundle
 
 ```scala
 // Deserialize a zip bundle
@@ -94,7 +93,7 @@ val zipBundle = (for(bundle <- managed(BundleFile("jar:file:/tmp/mleap-examples/
 }).opt.get
 ```
 
-### 目录包
+### 目录Bundle
 
 ```scala
 // Deserialize a directory bundle
