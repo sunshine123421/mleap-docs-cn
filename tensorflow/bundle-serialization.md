@@ -1,16 +1,9 @@
-# Tensorflow Bundle Serialization
+# Tensorflow Bundle序列化
 
-When serializing your Tensorflow transformers to an MLeap Bundle, we
-will store the Tensorflow graph as a Protobuf file. In order to
-Tensorflow graphs, you should first freeze your Tensorflow graph using
-[freeze_graph](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py).
-This will ensure that everything needed to execute your graph is in the
-graph definition file.
+当将Tensorflow转换器序列化为一个MLeap Bundle，我们会将Tensorflow图存储为Protobuf格式的文件，对于Tensorflow图，你需要首先使用[freeze_graph](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py)冻结你的Tensorflow图。这将确保执行图所需的一切都在图的定义文件中。
 
-## Sample MLeap Tensorflow Bundle
+## 简单的MLeap Tensorflow Bundle
 
-Download an example MLeap Bundle that uses Tensorflow to add two floats
-together: [MLeap Tensorflow Bundle](../assets/bundles/tensorflow-model.zip).
+下载一个使用Tensorflow添加两个浮点数示例的MLeap Bundle: [MLeap Tensorflow Bundle](../assets/bundles/tensorflow-model.zip).
 
-NOTE: right click and "Save As...", Gitbook prevents directly clicking
-on the link.
+注意：点击右键并点击“另存为...”，Gitbook会阻止直接点击在链接上。
