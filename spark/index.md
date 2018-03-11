@@ -1,6 +1,6 @@
 # MLeap Spark集成
 
-MLeap的Spark集成附带以下功能集:
+MLeap的Spark集成具有下列特点:
 * 将Bundle.ML中的转换器和工作流序列化/反序列化
 * 支持额外的特征转换器和模型（例如：SVM, OneVsRest, MapTransform）
 * 支持自定义转换器
