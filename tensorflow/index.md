@@ -1,11 +1,7 @@
 # Tensorflow
 
-MLeap provides integration with Tensorflow in 2 forms:
+MLeap提供了与Tensorflow集成的两种方式：
+1. 一个MLeap Tensorflow转换器可以执行任意的Tensorflow图
+2. 一组Tensorflow的自定义操作可以执行MLeap图
 
-1. An MLeap Tensorflow transformer that executes arbitrary Tensorflow graphs
-2. A set of custom operations within Tensorflow that can execute MLeap graphs
-
-Currently only __1__ is supported, we are currently planning __2__,
-which will make it possible to export your Scikit-learn, Spark, or MLeap
-pipeline directly to Tensorflow.
-
+目前只支持__1__，我们计划支持__2__，这将会使Scikit-learn, Spark, 或者MLeap工作流直接输出到Tensorflow。
