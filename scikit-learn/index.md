@@ -1,29 +1,29 @@
-# MLeap Scikit-Learn Integration
+# MLeap Scikit-Learn集成
 
-MLeap provides serialization functionality to Scikit Pipelines, Feature Unions and Transformers to Bundle.Ml in such a way that we maintain parity between Scikit and Spark transformers' functionality.
-There are two main use-cases for MLeap-Scikit:
-1. Serialize Scikit Pipelines and execute using MLeap Runtime
-2. Serialize Scikit Pipelines and deserialize with Spark
+MLeap为Scikit工作流提供序列化功能，特征空间和转换器Bundle.Ml可以以保证Scikit和Spark的转换器功能平衡的方式。
+MLeap-Scikit两个主要的用例：
+1. 序列化Scikit工作流和MLeap运行时执行
+2. 序列化Scikit工作流和Spark反序列化
 
-As mentioned earlier, MLeap Runtime is a scala-only library today and we plan to add Python bindings in the future. However, it is enough to be able to execute pipelines and models without the dependency on Scikit, and Numpy.
+前面提到过现在MLeap运行时是一个仅有scala语言的库，未来我们计划添加对Python的支持。然而即使没有Scikit和Numpy的依赖，也能足够执行工作流和模型。
 
-## Extending Scikit with MLeap
+## MLeap扩展Scikit
 
-There are a couple of important differences in how scikit transformers work and how Spark transformers work:
-1. Spark transformers all come with `name`, `op`, `inputCol`, and `outputCol` attributes, scikit does not
-2. Spark transformers can opperate on a vector, where as scikit operates on a n-dimensional arrays and matrices
-3. Spark, because it is written in Scala, makes it easy to add implicit functions and attributes, with scikit it is a bit trickier and requires use of setattr()
+scikit转换器和Spark转换器的工作原理有下列重要的不同点：
+1. Spark转换器带有`name`, `op`, `inputCol`, and `outputCol`的属性，scikit没有
+2. Spark转换器可以在向量上运行，scikit是运行在n维数组和矩阵上
+3. Spark是用Scala语言编写，所以对Spark添加隐式函数和属性相对容易，scikit稍微棘手，需要使用setattr()方法
 
-Because of these additional complexities, there are a few paradigms we have to follow when extending scikit transformers with MLeap.
-First is we have to initialize each transformer to include:
-* Op: Unique `op` name - this is used as a link to Spark-based transformers (i.e. a Standard Scaler in scikit is the same as in Spark, so we have an op called `standard_scaler` to represent it)
-* Name: A unique name for each transformer. For example, if you have multiple Standard Scaler objects, each needs to be assigned a unque name
-* Input Column: Strictly for serialization, we set what the input column is
-* Output Column: Strictly for serialization, we set what the output column is
+由于这些额外的复杂性，当用MLeap扩展scikit转换器时，我们必须遵循下列格式。
+首先，需要初始化每个转换器并包括：
+* Op: 唯一的`op`名字 - 把它当作一个基于Spark转换器的链接使用（例如scikit里的标准缩放与Spark是相同的，所以我们有一个名为`standard_scaler`的操作来表示它）
+* 名字：每一个转换器有一个唯一的命名。例如，如果有多个标准缩放对象，每一个都需要一个唯一的命名
+* 输入列：为了序列化，我们要设置输入列
+* 输出列: 为了反序列化，需要设置输出列
 
-### Scikit Transformer and Pipeline with MLeap
+### MLeap的Scikit转换器和工作流
 
-Let's first initialize all of the required libraries
+首先，初始化所有需要的库
 ```python
 # Initialize MLeap libraries before Scikit/Pandas
 import mleap.sklearn.preprocessing.data
@@ -37,14 +37,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 ```
 
-Then let's create a test DataFrame in Pandas
+接着，在Pandas中创建一个测试的数据帧
 
 ```python
 # Create a pandas DataFrame
 df = pd.DataFrame(np.random.randn(10, 5), columns=['a', 'b', 'c', 'd', 'e'])
 ```
 
-Let's define two transformers, a feature extractor that will extract only the features we want to scale and Standard Scaler, which will perform the standard normal scaling operation.
+我们定义了两个转换器，一个特征提取器将只提取我们想要缩放的特征；另一个标准缩放器将执行标准的正常缩放操作。
 
 ```python
 # Initialize a FeatureExtractor, which subselects only the features we want
@@ -68,7 +68,7 @@ standard_scaler_tf.mlinit(prior_tf=feature_extractor_tf,
                           output_features='scaled_continuous_features')
 ```
 
-Now that we have our transformers defined, we assemble them into a pipeline and execute it on our data frame
+现在，已经有我们定义的转换器，我们将它们合并为一个工作流并在数据帧中执行
 
 ```python
 # Now let's create a small pipeline using the Feature Extractor and the Standard Scaler
@@ -92,11 +92,11 @@ array([[ 0.2070446 ,  0.30612846, -0.91620529],
        [ 1.87161513, -0.11630878, -1.40990552]])
 ```
 
-## Combining Transformers
+## 合并转换器
 
-We just demonstrated how to apply a transformer to a set of features, but the output of that opperation is just a n-dimensional array that we would have to join back to our original data if we wanted to use it in say a regression model. Let's show how we can combine data from multiple transformers using Feature Unions.
+我们演示了如何在一系列特征上做转换器，但是这些操作的输出只是一个n维数组，如果我们想在回归模型中使用它，那么我们需要加入到原始数据中。接下来演示如何使用特征空间从多个转换器中合并数据。
 
-First, go ahead and create another transformers, a MinMaxScaler on the remaining two features of the data frame:
+首先，继续并创建另一个转换器，在数据帧上对其余两个特征做归一化：
 
 ```python
 from sklearn.preprocessing import MinMaxScaler
@@ -138,7 +138,7 @@ array([[ 0.58433367,  0.72234095],
        [ 0.33707035,  0.39792128]])
 ```
 
-Finaly, let's combine the two pipelines using a Feature Union. Note that you do not have to run the `fit` or `fit_transform` method on the pipeline before assembling the Feature Union.
+最后，使用特征空间合并两个工作流。提示，在集合特征空间前不需要在工作流上运行`fit`或者`fit_transform`方法
 
 ```python
 # Import MLeap extension to Feature Unions
@@ -172,30 +172,30 @@ array([[ 0.2070446 ,  0.30612846, -0.91620529,  0.58433367,  0.72234095],
        [ 1.87161513, -0.11630878, -1.40990552,  0.33707035,  0.39792128]])
 ```
 
-## Serialize to Zip File
+## 序列化到压缩文件
 
-In order to serialize to a zip file, make sure the URI begins with `jar:file` and ends with a `.zip`.
+为了序列化到压缩文件，确保URI以`jar:file`作为前缀，以`.zip`作为后缀。
 
-For example `jar:file:/tmp/mleap-bundle.zip`.
+例如：`jar:file:/tmp/mleap-bundle.zip`.
 
-Note that you do have to fit your pipeline before serializing.
+提示，在序列化前必须适配您的工作流。
 
-### JSON Format
+### JSON格式
 
-Setting `init=True` tells the serializer that we are creating a bundle instead of just serializing the transformer.
+设置`init=True`表示创建一个bundle来代替序列化转换器。
 
 ```python
 feature_union_pipeline.serialize_to_bundle('/tmp', 'jar:file:/tmp/mleap-bundle.zip', init=True)
 ```
 
-### Protobuf Format
+### Protobuf格式
 
-Coming Soon
+即将推出
 
-### Deserializing
+### 反序列化
 
-Coming Soon
+即将推出
 
-## Demos
+## 演示
 
-Complete demos available on github that demonstrates full usage of Transformers, Pipelines, Feature Unions and serialization.
+github上对转换器、工作流、特征空间和序列化的所有步骤提供了完整的演示。
